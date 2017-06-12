@@ -1,4 +1,4 @@
-class colors:
+class Colors:
     indianred = (176, 23, 31)
     crimson = (220, 20, 60)
     lightpink = (255, 182, 193)
@@ -557,8 +557,6 @@ class colors:
     def __init__(self):
         pass
 
+    @staticmethod
     def getname(self, name):
         return getattr(self, name)
-
-
-Colors = colors()

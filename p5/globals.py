@@ -1,5 +1,5 @@
 import math
-
+from .core import WindowManager
 
 # no dependencies (tkinter is builtin)
 
@@ -7,16 +7,14 @@ import math
 # ------------------------------------------------------------------------
 # declaration of global vars
 
-class Globalvars:
-    __FPS__ = 60.0
-    __FILE__ = None
-    __RUNNING__ = True
-    __DEFAULTWIDTH__ = 640
-    __DEFAULTHEIGHT__ = 480
-    __MODE__ = "2D"
-
-
-Globals = Globalvars()
+class Globals:
+    FPS = 60.0
+    FILE = None
+    RUNNING = True
+    DEFAULTWIDTH = 640
+    DEFAULTHEIGHT = 480
+    MODE = "2D"
+    WINDOWMANAGER = WindowManager()
 
 # ------------------------------------------------------------------------
 # declaration of constants

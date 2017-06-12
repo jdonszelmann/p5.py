@@ -1,63 +1,7 @@
-import pyglet, inspect, importlib.util
 from pyglet.gl import *
-from p5.globals import *
-from p5.functions import *
 
 
-class init:
-    def __init__(self, setup=None, preload=None, draw=None):
-        # list functions from main file to be called
-        f = inspect.getouterframes(inspect.currentframe())[-1][1]
-        Globals.__FILE__ = f
-        print(f)
-
-        # import sketch (from absolute path)
-        spec = importlib.util.spec_from_file_location("", Globals.__FILE__)
-        sketch = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(sketch)
-
-        try:
-            self.setup = sketch.setup
-        except:
-            raise SystemExit("found no setup function! p5.py failed to start.")
-        try:
-            self.draw = sketch.draw
-        except:
-            raise SystemExit("could not find draw function, p5.py failed to start.")
-
-        # start p5py
-        self.start()
-
-    def start(self):
-        # run setup from sketch
-        self.setup()
-
-        glEnable(GL_TEXTURE_2D)  # enable textures
-        glShadeModel(GL_SMOOTH)  # smooth shading of polygons
-
-        while Globals.__RUNNING__:
-            dt = pyglet.clock.tick()
-            pyglet.clock.set_fps_limit(30)
-
-            # clear all windows
-            for window in windowmanager.windows:
-                # draw background
-                pyglet.gl.glClearColor(*window.drawsettings.backgroundcolor.get())
-
-                window.window.clear()
-
-            # call draw from sketch
-            self.draw()
-
-            # update all windows
-            for window in windowmanager.windows:
-                # draw the batch class
-                window.batch.draw()
-                window.window.dispatch_events()
-                window.window.flip()
-
-
-class _windowmanager:
+class WindowManager:
     def __init__(self):
         self.windows = []
         self.selectedwindow = None
@@ -73,10 +17,10 @@ class _windowmanager:
         self.windows.remove(window)
         window.window.close()
         if len(self.windows) == 0:
-            Globals.__RUNNING__ = False
+            Globals.RUNNING = False
 
 
-class _drawsettings:
+class DrawSettings:
     def __init__(self):
         from p5.classes import color
         # color related properties
@@ -87,7 +31,7 @@ class _drawsettings:
         self.strokeweight = 1
 
 
-class _batch():
+class Batch():
     def __init__(self):
         self.batch = pyglet.graphics.Batch()
 
@@ -107,7 +51,7 @@ VectorSet class
 collects Vectors in an array to form a set which can be manipulated all at once
 
 for example:
-	s = _vectorset(Vector(0,0),Vector(5,5))
+	s = vectorset(Vector(0,0),Vector(5,5))
 	s.translate() #translates both vectors
 
 used in coordinate manipulation (coordinates are stored as vectors)
@@ -164,6 +108,3 @@ class _vectorset:
     def round_vectors(self):
         for i in self.vectors:
             i.round_values()
-
-
-windowmanager = _windowmanager()
