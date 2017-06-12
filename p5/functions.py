@@ -8,14 +8,9 @@ def CreateVector(*args,**kwargs):
 # def rect(x1,y1,x2,y2):
 # 	
 def point(x,y):
-	 pyglet.graphics.draw(1, pyglet.gl.GL_POINTS,
-			('v2i', (x,y)),
-			('c3B', (255,255,255))
-	)
-
-
-
-
+	from p5.core import windowmanager
+	windowmanager.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,('v2i', (x,y)),('c3B', *windowmanager.selectedwindow.drawsettings.fillcolor.get()))
+	
 
 
 #drawing propertird such as basckround, fill, stroke etc.
@@ -23,7 +18,7 @@ def background(*args,**kwargs):
 	from p5.classes import color
 	from p5.core import windowmanager
 	windowmanager.selectedwindow.batch.clear()
-	
+
 	for i in args:
 		if type(i) == color:
 			windowmanager.selectedwindow.drawsettings.backgroundcolor = color
@@ -35,32 +30,25 @@ def background(*args,**kwargs):
 	windowmanager.selectedwindow.drawsettings.backgroundcolor = color(*args,**kwargs)
 	
 	
-	toall = False
-	make = True
+def fill(*args,**kwargs):
+	from p5.classes import color
+	from p5.core import windowmanager
+	windowmanager.selectedwindow.batch.clear()
+
 	for i in args:
 		if type(i) == color:
-			windowmanager.selectedwindow.drawsettings.background = color
-			make = False
-			break
+			windowmanager.selectedwindow.drawsettings.fillcolor = color
+			return
 	for key,value in kwargs.items():
 		if type(value) == color:
-			windowmanager.selectedwindow.drawsettings.background = value
-			make = False
-		if key == "all":
-			if value:
-				toall = True
-	if make:
-		windowmanager.selectedwindow.drawsettings.background = color(*args,**kwargs)
-
-	if toall:
-		for window in windowmanager.windows:
-			pyglet.gl.glClearColor(window.drawsettings.backgroundcolor.get())
-			window.window.clear()
-	else:
-		pyglet.gl.glClearColor(*windowmanager.selectedwindow.drawsettings.backgroundcolor.get())
-		windowmanager.selectedwindow.window.clear()
+			windowmanager.selectedwindow.drawsettings.fillcolor = value
+			return
+	windowmanager.selectedwindow.drawsettings.fillcolor = color(*args,**kwargs)
+	
 
 
+
+#screen commands
 def clear():
 	from p5.core import windowmanager
 	windowmanager.selectedwindow.window.clear()

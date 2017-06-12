@@ -1,4 +1,5 @@
 from p5 import *
+from random import randint
 
 
 def setup():
@@ -7,5 +8,5 @@ def setup():
 def draw():
 	background(name="white")
 
-	for i in range(10,100):
-		point(i,10)
+	
+	point(randint(0,100),randint(0,100))

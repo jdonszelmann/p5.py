@@ -36,7 +36,8 @@ class init:
 
 		while Globals.__RUNNING__:
 			dt = pyglet.clock.tick()
-			
+			pyglet.clock.set_fps_limit(30)
+
 			#clear all windows
 			for window in windowmanager.windows:
 				#draw background
@@ -78,9 +79,9 @@ class _drawsettings:
 	def __init__(self):
 		from p5.classes import color
 		#color related properties
-		self.stroke = color(255,255,255)
+		self.strokecolor = color(255,255,255)
 		self.backgroundcolor = color(255,0,255)
-		self.fill = color(255,255,255)
+		self.fillcolor = color(255,255,255)
 		#value related properties
 		self.strokeweight = 1
 
@@ -91,8 +92,8 @@ class _batch():
 	def draw(self):
 		self.batch.draw()
 
-	def add(self,item):
-		self.batch.add(item)
+	def add(self,*args,**kwargs):
+		self.batch.add(*args,**kwargs)
 
 	def clear(self):
 		self.batch = pyglet.graphics.Batch()
