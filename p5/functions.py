@@ -22,31 +22,17 @@ def point(x,y):
 def background(*args,**kwargs):
 	from p5.classes import color
 	from p5.core import windowmanager
-	
-	toall = False
-	make = True
+
 	for i in args:
 		if type(i) == color:
-			windowmanager.selectedwindow.drawsettings.background = color
-			make = False
-			break
+			windowmanager.selectedwindow.drawsettings.backgroundcolor = color
+			return
 	for key,value in kwargs.items():
 		if type(value) == color:
-			windowmanager.selectedwindow.drawsettings.background = value
-			make = False
-		if key == "all":
-			if value:
-				toall = True
-	if make:
-		windowmanager.selectedwindow.drawsettings.background = color(*args,**kwargs)
-
-	if toall:
-		for window in windowmanager.windows:
-			pyglet.gl.glClearColor(window.drawsettings.backgroundcolor.get())
-			window.window.clear()
-	else:
-		pyglet.gl.glClearColor(*windowmanager.selectedwindow.drawsettings.backgroundcolor.get())
-		windowmanager.selectedwindow.window.clear()
+			windowmanager.selectedwindow.drawsettings.backgroundcolor = value
+			return
+	windowmanager.selectedwindow.drawsettings.backgroundcolor = color(*args,**kwargs)
+	
 
 def clear():
 	from p5.core import windowmanager

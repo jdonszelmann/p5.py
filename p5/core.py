@@ -83,7 +83,7 @@ class _drawsettings:
 		self.stroke = color(255,255,255)
 		self.backgroundcolor = color(255,0,255)
 		self.fill = color(255,255,255)
-
+		print("hi")
 		#value related properties
 		self.strokeweight = 1
 
