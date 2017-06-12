@@ -9,8 +9,10 @@ def CreateVector(*args,**kwargs):
 # 	
 def point(x,y):
 	from p5.core import windowmanager
-	windowmanager.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,('v2i', (x,y)),('c3B', *windowmanager.selectedwindow.drawsettings.fillcolor.get()))
-	
+	windowmanager.selectedwindow.batch.add(2, pyglet.gl.GL_POINTS,
+											('v2i', (10, 15, 30, 35)),
+											('c3B',(0,1,0))
+											)
 
 
 #drawing propertird such as basckround, fill, stroke etc.
@@ -53,4 +55,7 @@ def clear():
 	from p5.core import windowmanager
 	windowmanager.selectedwindow.window.clear()
 	windowmanager.selectedwindow.batch.clear()
+
+
+
 
