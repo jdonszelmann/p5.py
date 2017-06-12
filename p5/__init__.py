@@ -51,7 +51,7 @@ class Init:
             self.draw()
 
             # update all windows
-            for window in windowmanager.windows:
+            for window in Globals.WINDOWMANAGER.windows:
                 # draw the batch class
                 window.batch.draw()
                 window.window.dispatch_events()

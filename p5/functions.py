@@ -1,5 +1,6 @@
 import pyglet
 from .globals import Globals
+from .classes import Color
 
 
 def CreateVector(*args, **kwargs):
@@ -10,10 +11,9 @@ def CreateVector(*args, **kwargs):
 # def rect(x1,y1,x2,y2):
 #
 def point(x,y):
-	from p5.core import windowmanager
-	windowmanager.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,None,
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,None,
 		('v2i', (10, 15)),
-		('c4b',windowmanager.selectedwindow.drawsettings.fillcolor.get())
+		('c4b',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
 	)
 	# windowmanager.selectedwindow.batch.add(2, pyglet.gl.GL_POINTS,
 	# 										('v2i', (10, 15, 30, 35)),
@@ -23,39 +23,35 @@ def point(x,y):
 
 # drawing propertird such as basckround, fill, stroke etc.
 def background(*args, **kwargs):
-    from p5.classes import color
-    from p5.core import windowmanager
-    windowmanager.selectedwindow.batch.clear()
+    from p5.classes import Color
+    Globals.WINDOWMANAGER.selectedwindow.batch.clear()
 
     for i in args:
-        if type(i) == color:
-            windowmanager.selectedwindow.drawsettings.backgroundcolor = color
+        if type(i) == Color:
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = color
             return
     for key, value in kwargs.items():
-        if type(value) == color:
-            windowmanager.selectedwindow.drawsettings.backgroundcolor = value
+        if type(value) == Color:
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = value
             return
-    windowmanager.selectedwindow.drawsettings.backgroundcolor = color(*args, **kwargs)
+        Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = Color(*args, **kwargs)
 
 
 def fill(*args, **kwargs):
-    from p5.classes import color
-    from p5.core import windowmanager
-    windowmanager.selectedwindow.batch.clear()
+    Globals.WINDOWMANAGER.selectedwindow.batch.clear()
 
     for i in args:
-        if type(i) == color:
-            windowmanager.selectedwindow.drawsettings.fillcolor = color
+        if type(i) == Color:
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = color
             return
     for key, value in kwargs.items():
-        if type(value) == color:
-            windowmanager.selectedwindow.drawsettings.fillcolor = value
+        if type(value) == Color:
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = value
             return
-    windowmanager.selectedwindow.drawsettings.fillcolor = color(*args, **kwargs)
+        Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = Color(*args, **kwargs)
 
 
 # screen commands
 def clear():
-    from p5.core import windowmanager
-    windowmanager.selectedwindow.window.clear()
-    windowmanager.selectedwindow.batch.clear()
+    Globals.WINDOWMANAGER.selectedwindow.window.clear()
+    Globals.WINDOWMANAGER.selectedwindow.batch.clear()

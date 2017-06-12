@@ -1,6 +1,7 @@
 from pyglet.gl import *
 
 
+
 class WindowManager:
     def __init__(self):
         self.windows = []
@@ -22,11 +23,11 @@ class WindowManager:
 
 class DrawSettings:
     def __init__(self):
-        from p5.classes import color
+        from p5.classes import Color
         # color related properties
-        self.strokecolor = color(255, 255, 255)
-        self.backgroundcolor = color(255, 0, 255)
-        self.fillcolor = color(255, 255, 255)
+        self.strokecolor = Color(255, 255, 255)
+        self.backgroundcolor = Color(255, 0, 255)
+        self.fillcolor = Color(255, 255, 255)
         # value related properties
         self.strokeweight = 1
 
