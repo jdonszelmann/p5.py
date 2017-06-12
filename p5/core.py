@@ -44,8 +44,6 @@ class init:
 
 				window.window.clear()
 
-				
-
 			#call draw from sketch
 			self.draw()
 			
@@ -88,10 +86,16 @@ class _drawsettings:
 
 class _batch():
 	def __init__(self):
-		pass
+		self.batch = pyglet.graphics.Batch()
 
 	def draw(self):
-		pass
+		self.batch.draw()
+
+	def add(item):
+		self.batch.add(item)
+
+	def clear():
+		self.batch = pyglet.graphics.Batch()
 
 """
 VectorSet class
@@ -100,7 +104,7 @@ collects Vectors in an array to form a set which can be manipulated all at once
 
 for example:
 	s = _vectorset(Vector(0,0),Vector(5,5))
-	s.translate() #translates both
+	s.translate() #translates both vectors
 
 used in coordinate manipulation (coordinates are stored as vectors)
 """
@@ -153,9 +157,6 @@ class _vectorset:
 	def round_vectors(self):
 		for i in self.vectors:
 			i.round_values()
-
-
-
 
 
 
