@@ -1,27 +1,30 @@
 from p5.core import *
+from p5.core import windowmanager
 
 
 class CreateWindow:
 	def __init__(self,w=Globals.__DEFAULTWIDTH__,h = Globals.__DEFAULTHEIGHT__,resizable=True):
-		self.window = windowmanager.new_window(w,h,resizable)
+		from p5.core import _batch,_drawsettings
+		self.batch = _batch()
+		self.drawsettings = _drawsettings()
+
+
+		self.window = windowmanager.new_window(self,w,h,resizable)
 		self.on_close = self.window.event(self.on_close)
 
+		
 	def on_close(self):
-		windowmanager.remove(self.window)
+		windowmanager.remove(self)
+
+
+
+
 
 class Vector:
-"""
-Base vector class with generic vector functions. This vector class can be treated as a list, and supports zero-based indexing.
-This vector class also implements the '__iter__' function, which is useful for looping.
-Some useful functions:
-- rotation
-- normalisation
-- crossproduct and inproduct
-The class is created with the x-, y- and z-coordinate defaulting to 0. One can specify the coordinates by keyword
-or by argument order as: x, y, z respectively.
-"""
+	DECIMAL_PRECISION = 6
+
 	def __init__(self, x: float = 0, y: float = 0, z: float = 0):
-		# super ().__init__ () Calling the __init__ function of the superclass seems obsolete
+		super ().__init__ ()
 		self.x = x
 		self.y = y
 		self.z = z
@@ -140,7 +143,7 @@ or by argument order as: x, y, z respectively.
 		return self
 
 	def rotate(self, axis='x', by=0):
-		new_vector = CreateVector ()
+		new_vector = Vector ()
 		if axis == 'x':
 			X_AXIS = [[1, 0, 0],
 					  [0, math.cos ( by ), -math.sin ( by )],
@@ -195,8 +198,31 @@ or by argument order as: x, y, z respectively.
 	def __hash__(self):
 		return hash ( self.x ) ^ hash ( self.y ) ^ hash ( self.z )
 
+	def round_values(self):
+		self.x = round ( self.x, self.DECIMAL_PRECISION )
+		self.y = round ( self.y, self.DECIMAL_PRECISION )
+		self.z = round ( self.z, self.DECIMAL_PRECISION )
+
 	def angle(self, other):
 		return math.acos ( self.inproduct ( other ) / (self.magnitude * other.magnitude) )
 
 	def __len__(self):
 		return 
+
+class color:
+	def __init__(self,r:int=255,g:int=255,b:int=255,a:int=255,name:str=None):
+		self.r = r
+		self.g = g
+		self.b = b
+		self.a = a
+		if name != None:
+			from p5.color import Colors
+			self.r,self.g,self.b = Colors.getname(name)
+
+	def get(self):
+		return (self.r/255,self.g/255,self.b/255,self.a/255)
+
+
+
+
+

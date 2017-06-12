@@ -11,6 +11,7 @@ class Globalvars:
 	__RUNNING__				=		True
 	__DEFAULTWIDTH__		=		640
 	__DEFAULTHEIGHT__		=		480
+	__MODE__				=		"2D"
 
 
 Globals = Globalvars()

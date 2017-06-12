@@ -5,4 +5,5 @@ def setup():
 	CreateWindow(640,480)
 
 def draw():
-	pass
+	for i in range(10,100):
+		point(i,10)

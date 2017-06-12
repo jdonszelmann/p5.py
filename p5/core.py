@@ -31,19 +31,30 @@ class init:
 		# run setup from sketch
 		self.setup ()
 
-		glEnable(GL_TEXTURE_2D)         # enable textures
-		glShadeModel(GL_SMOOTH)         # smooth shading of polygons
+		glEnable(GL_TEXTURE_2D)# enable textures
+		glShadeModel(GL_SMOOTH)# smooth shading of polygons
 
 		while Globals.__RUNNING__:
 			dt = pyglet.clock.tick()
+			
+			#clear all windows
+			for window in windowmanager.windows:
+				#draw background
+				pyglet.gl.glClearColor(*window.drawsettings.backgroundcolor.get())
+
+				window.window.clear()
+
+				
 
 			#call draw from sketch
 			self.draw()
-			#update every window
+			
+			#update all windows
 			for window in windowmanager.windows:
-				window.dispatch_events()
-				window.clear()
-				window.flip()
+				#draw the batch class
+				window.batch.draw()
+				window.window.dispatch_events()
+				window.window.flip()
 
 
 class _windowmanager:
@@ -51,26 +62,49 @@ class _windowmanager:
 		self.windows = []
 		self.selectedwindow = None
 
-	def new_window(self,w,h,resizable):
+	def new_window(self,parent,w,h,resizable):
 		win = pyglet.window.Window(w,h,resizable=True)
-		self.windows.append(win)
+		self.windows.append(parent)
 		if len(self.windows) == 1:
-			self.selectedwindow = win
+			self.selectedwindow = parent
 		return win
 
 	def remove(self,window):
 		self.windows.remove(window)
-		window.close()
+		window.window.close()
 		if len(self.windows) == 0:
 			Globals.__RUNNING__ = False
 
 
 class _drawsettings:
 	def __init__(self):
-		self.settings = {}
+		from p5.classes import color
+		#color related properties
+		self.stroke = color(255,255,255)
+		self.backgroundcolor = color(255,0,255)
+		self.fill = color(255,255,255)
 
+		#value related properties
+		self.strokeweight = 1
 
+class _batch():
+	def __init__(self):
+		pass
 
+	def draw(self):
+		pass
+
+"""
+VectorSet class
+
+collects Vectors in an array to form a set which can be manipulated all at once
+
+for example:
+	s = _vectorset(Vector(0,0),Vector(5,5))
+	s.translate() #translates both
+
+used in coordinate manipulation (coordinates are stored as vectors)
+"""
 class _vectorset:
 	def __init__(self, vectors = []):
 		self.vectors = vectors
@@ -129,4 +163,3 @@ class _vectorset:
 
 
 windowmanager = _windowmanager()
-
