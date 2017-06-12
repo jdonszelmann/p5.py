@@ -1,0 +1,3 @@
+rects with round edges: CENTER & RADIUS mode support
+Rotate functionality - translate to 0,0
+rewrite styles class
