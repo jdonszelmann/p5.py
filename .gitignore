@@ -1,4 +1,3 @@
 __pycache__/
-*.py[cod]
 .*.py #exclude mac related files
 .idea/

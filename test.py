@@ -6,7 +6,7 @@ def setup():
 	CreateWindow(640,480)
 
 def draw():
-	background(name="white")
+	#background(name="white")
 
 	
 	point(randint(0,100),randint(0,100))

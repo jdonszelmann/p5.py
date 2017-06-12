@@ -1,13 +1,30 @@
-from p5.core import *
-from p5.core import windowmanager
+from p5.globals import Globalvars as Globals
+import pyglet
+class _windowmanager:
+    def __init__(self):
+        self.windows = []
+        self.selectedwindow = None
 
+    def new_window(self, parent, w, h, resizeable):
+        win = pyglet.window.Window(w, h, resizable=True)
+        self.windows.append(parent)
+        if len(self.windows) == 1:
+            self.selectedwindow = parent
+        return win
+
+    def remove(self, window):
+        self.windows.remove(window)
+        window.window.close()
+        if len(self.windows) == 0:
+            Globals.__RUNNING__ = False
+
+windowmanager = _windowmanager()
 
 class CreateWindow:
     def __init__(self, w=Globals.__DEFAULTWIDTH__, h=Globals.__DEFAULTHEIGHT__, resizable=True):
         from p5.core import _batch, _drawsettings
         self.batch = _batch()
         self.drawsettings = _drawsettings()
-
         self.window = windowmanager.new_window(self, w, h, resizable)
         self.on_close = self.window.event(self.on_close)
 
