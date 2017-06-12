@@ -10,10 +10,18 @@ class CreateWindow:
 		windowmanager.remove(self.window)
 
 class Vector:
-	DECIMAL_PRECISION = 6
-
+"""
+Base vector class with generic vector functions. This vector class can be treated as a list, and supports zero-based indexing.
+This vector class also implements the '__iter__' function, which is useful for looping.
+Some useful functions:
+- rotation
+- normalisation
+- crossproduct and inproduct
+The class is created with the x-, y- and z-coordinate defaulting to 0. One can specify the coordinates by keyword
+or by argument order as: x, y, z respectively.
+"""
 	def __init__(self, x: float = 0, y: float = 0, z: float = 0):
-		super ().__init__ ()
+		# super ().__init__ () Calling the __init__ function of the superclass seems obsolete
 		self.x = x
 		self.y = y
 		self.z = z
@@ -186,11 +194,6 @@ class Vector:
 
 	def __hash__(self):
 		return hash ( self.x ) ^ hash ( self.y ) ^ hash ( self.z )
-
-	def round_values(self):
-		self.x = round ( self.x, self.DECIMAL_PRECISION )
-		self.y = round ( self.y, self.DECIMAL_PRECISION )
-		self.z = round ( self.z, self.DECIMAL_PRECISION )
 
 	def angle(self, other):
 		return math.acos ( self.inproduct ( other ) / (self.magnitude * other.magnitude) )
