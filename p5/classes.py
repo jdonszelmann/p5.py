@@ -220,7 +220,7 @@ class color:
 			self.r,self.g,self.b = Colors.getname(name)
 
 	def get(self):
-		return (self.r/255,self.g/255,self.b/255,self.a/255)
+		return (self.r//255,self.g//255,self.b//255,self.a//255)
 
 
 

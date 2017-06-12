@@ -50,8 +50,10 @@ class init:
 			
 			#update all windows
 			for window in windowmanager.windows:
+				
 				#draw the batch class
-				window.batch.draw()
+				window.batch.batch.draw()
+				
 				window.window.dispatch_events()
 				window.window.flip()
 
@@ -89,8 +91,6 @@ class _batch():
 	def __init__(self):
 		self.batch = pyglet.graphics.Batch()
 
-	def draw(self):
-		self.batch.draw()
 
 	def add(self,*args,**kwargs):
 		self.batch.add(*args,**kwargs)

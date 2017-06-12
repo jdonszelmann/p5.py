@@ -421,7 +421,7 @@ class colors:
 	firebrick2=(238,44,44)
 	firebrick3=(205,38,38)
 	firebrick4=(139,26,26)
-	red1=(255,0,0)
+	red=(255,0,0)
 	red2=(238,0,0)
 	red3=(205,0,0)
 	red4=(139,0,0)
