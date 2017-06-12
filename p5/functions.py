@@ -22,7 +22,8 @@ def point(x,y):
 def background(*args,**kwargs):
 	from p5.classes import color
 	from p5.core import windowmanager
-
+	windowmanager.selectedwindow.batch.clear()
+	
 	for i in args:
 		if type(i) == color:
 			windowmanager.selectedwindow.drawsettings.backgroundcolor = color
@@ -63,3 +64,5 @@ def background(*args,**kwargs):
 def clear():
 	from p5.core import windowmanager
 	windowmanager.selectedwindow.window.clear()
+	windowmanager.selectedwindow.batch.clear()
+
