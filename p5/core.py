@@ -51,7 +51,7 @@ VectorSet class
 collects Vectors in an array to form a set which can be manipulated all at once
 
 for example:
-	s = vectorset(Vector(0,0),Vector(5,5))
+	s = _vectorset(Vector(0,0),Vector(5,5))
 	s.translate() #translates both vectors
 
 used in coordinate manipulation (coordinates are stored as vectors)
@@ -108,3 +108,4 @@ class _vectorset:
     def round_vectors(self):
         for i in self.vectors:
             i.round_values()
+

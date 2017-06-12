@@ -3,19 +3,25 @@ import pyglet
 
 
 class CreateWindow:
-    def __init__(self, w=Globals.DEFAULTWIDTH, h=Globals.DEFAULTHEIGHT, resizable=True):
-        from p5.core import Batch, DrawSettings
-        self.batch = Batch()
-        self.drawsettings = DrawSettings()
-        self.window = Globals.WINDOWMANAGER.new_window(self, w, h, resizable)
-        self.on_close = self.window.event(self.on_close)
+	def __init__(self,w=Globals.__DEFAULTWIDTH__,h = Globals.__DEFAULTHEIGHT__,resizable=True):
+		from p5.core import _batch,_drawsettings
+		self.batch = _batch()
+		self.drawsettings = _drawsettings()
 
-    def on_close(self):
-        Globals.WINDOWMANAGER.remove(self)
+
+		self.window = windowmanager.new_window(self,w,h,resizable)
+		self.on_close = self.window.event(self.on_close)
+
+		
+	def on_close(self):
+		windowmanager.remove(self)
+
+
+
 
 
 class Vector:
-    DECIMAL_PRECISION = 6
+	DECIMAL_PRECISION = 6
 
     def __init__(self, x: float = 0, y: float = 0, z: float = 0):
         super().__init__()
@@ -55,11 +61,11 @@ class Vector:
     def __add__(self, other):
         return self.__class__(self.x + other.x, self.y + other.y, self.z + other.z)
 
-    def __iadd__(self, other):
-        self.x += other.x
-        self.y += other.y
-        self.z += other.z
-        return self
+	def __iadd__(self, other):
+		self.x += other.x
+		self.y += other.y
+		self.z += other.z
+		return self
 
     def __sub__(self, other):
         return self.__class__(self.x - other.x, self.y - other.y, self.z - other.z)
@@ -214,5 +220,5 @@ class color:
             from p5.color import Colors
             self.r, self.g, self.b = Colors.getname(name)
 
-    def get(self):
-        return (self.r / 255, self.g / 255, self.b / 255, self.a / 255)
+	def get(self):
+		return (self.r//255,self.g//255,self.b//255,self.a//255)
