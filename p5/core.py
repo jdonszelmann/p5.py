@@ -91,10 +91,10 @@ class _batch():
 	def draw(self):
 		self.batch.draw()
 
-	def add(item):
+	def add(self,item):
 		self.batch.add(item)
 
-	def clear():
+	def clear(self):
 		self.batch = pyglet.graphics.Batch()
 
 """
