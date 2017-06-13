@@ -6,17 +6,14 @@ class WindowManager:
         self.windows = []
         self.selectedwindow = None
 
-    def new_window(self, parent, w, h, resizable):
-        win = pyglet.window.Window(w, h, resizable=True)
-        self.windows.append(parent)
+    def add(self, window):
+        self.windows.append(window)
         if len(self.windows) == 1:
-            self.selectedwindow = parent
-        return win
+            self.selectedwindow = window
 
     def remove(self, window):
         from .globals import Globals
         self.windows.remove(window)
-        window.window.close()
         if len(self.windows) == 0:
             Globals.RUNNING = False
 
@@ -43,6 +40,7 @@ class Batch():
         self.batch.add(*args, **kwargs)
 
     def clear(self):
+        print("hi")
         self.batch = pyglet.graphics.Batch()
 
 

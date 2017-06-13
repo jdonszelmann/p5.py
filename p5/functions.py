@@ -12,10 +12,13 @@ def CreateVector(*args, **kwargs):
 #
 def point(x,y):
     Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,None,
-		('v2i', (10, 15)),
+		('v2i', (x,y)),
 		('c4b',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
 	)
 
+
+def rect(x,y,w,h):
+	pass
 
 
 # drawing propertird such as basckround, fill, stroke etc.
@@ -31,12 +34,10 @@ def background(*args, **kwargs):
         if type(value) == Color:
             Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = value
             return
-        Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = Color(*args, **kwargs)
+    Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = Color(*args, **kwargs)
 
 
 def fill(*args, **kwargs):
-    Globals.WINDOWMANAGER.selectedwindow.batch.clear()
-
     for i in args:
         if type(i) == Color:
             Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = i

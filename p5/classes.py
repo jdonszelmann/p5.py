@@ -3,19 +3,21 @@ from p5.core import Batch, DrawSettings
 import pyglet
 
 
-class CreateWindow:
+class CreateWindow(pyglet.window.Window):
     def __init__(self,w=Globals.DEFAULTWIDTH,h = Globals.DEFAULTHEIGHT,resizable=True):
         self.batch = Batch()
         self.drawsettings = DrawSettings()
-
-
-        self.window = Globals.WINDOWMANAGER.new_window(self,w,h,resizable)
-        self.on_close = self.window.event(self.on_close)
-
+        super().__init__(w,h,resizable=resizable)
+        Globals.WINDOWMANAGER.add(self)
 
     def on_close(self):
         Globals.WINDOWMANAGER.remove(self)
+        self.close()
 
+    def on_draw(self):
+        pyglet.gl.glClearColor(*self.drawsettings.backgroundcolor.get(True))
+        self.clear()
+        self.batch.draw()
 
 
 
@@ -219,5 +221,9 @@ class Color:
             from p5.color import Colors
             self.r, self.g, self.b = Colors.getname(name)
 
-    def get(self):
-        return (self.r//255,self.g//255,self.b//255,self.a//255)
+    def get(self,retfloat = False):
+        if retfloat:
+            return (self.r/255,self.g/255,self.b/255,self.a/255)
+        else:
+            return (self.r,self.g,self.b,self.a)
+

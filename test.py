@@ -4,10 +4,11 @@ from random import randint
 
 def setup():
 	CreateWindow(640,480)
-	background(name="red")
+	background(name="lightpink")
 
 def draw():
+
+
 	fill(name="red")
 	
-	for i in range(0,100):
-		point(i,10)
+	point(randint(0,100),randint(0,100))

@@ -38,25 +38,35 @@ class Init:
         glEnable(GL_TEXTURE_2D)  # enable textures
         glShadeModel(GL_SMOOTH)  # smooth shading of polygons
 
-        while Globals.RUNNING:
-            dt = pyglet.clock.tick()
-            pyglet.clock.set_fps_limit(30)
-
-            # clear all windows
-            for window in Globals.WINDOWMANAGER.windows:
-                # draw background
-                pyglet.gl.glClearColor(*window.drawsettings.backgroundcolor.get())
-                window.window.clear()
-
-            # call draw from sketch
+        event_loop = pyglet.app.EventLoop()
+            
+        def update(dt):
             self.draw()
+            if not Globals.RUNNING:
+                event_loop.exit()
+        pyglet.clock.set_fps_limit(1/Globals.FPS)
+        pyglet.clock.schedule_interval(update, 1/Globals.FPS)
+        event_loop.run()
 
-            # update all windows
-            for window in Globals.WINDOWMANAGER.windows:
-                # draw the batch class
-                window.window.switch_to()
-                window.batch.draw()
-                window.window.dispatch_events()
-                window.window.flip()
+
+        # while Globals.RUNNING:
+        #     dt = pyglet.clock.tick()
+        #     pyglet.clock.set_fps_limit(30)
+
+        #     # clear all windows
+        #     for window in Globals.WINDOWMANAGER.windows:
+        #         # draw background
+        #         pyglet.gl.glClearColor(*window.drawsettings.backgroundcolor.get())
+        #         window.window.clear()
+
+        #     # call draw from sketch
+        #     self.draw()
+
+        #     # update all windows
+        #     for window in Globals.WINDOWMANAGER.windows:
+        #         # draw the batch class
+        #         window.window.dispatch_events()
+        #         window.window.dispatch_event('on_draw')
+        #         window.window.flip()
 
 init = Init()
