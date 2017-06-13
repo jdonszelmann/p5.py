@@ -11,15 +11,23 @@ def CreateVector(*args, **kwargs):
 # def rect(x1,y1,x2,y2):
 #
 def point(x,y):
-    print(Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
     Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,None,
         ('v2i', (x,y)),
         ('c4f',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
     )
 
 
-def rect(x,y,w,h):
-	pass
+def rect(x, y, w, h):
+    line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokecolor.get()
+    fill_collor = Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get()
+    points = [(x,y), (x+w, y), (x, y+h), (x+w, y+h)]
+    indices = [0,1,2, 3]
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_QUADS, None,
+                                                   indices,
+                                                   ('v2f', tuple(points))
+                                                   )
+
+
 
 
 # drawing propertird such as basckround, fill, stroke etc.

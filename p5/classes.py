@@ -213,6 +213,9 @@ class Vector:
     def __len__(self):
         return
 
+    def to_vertice(self):
+        return self.x, self.y, self.z
+
 
 class Color:
     def __init__(self, r: int = 255, g: int = 255, b: int = 255, a: int = 255, name: str = None):
