@@ -47,13 +47,13 @@ class CreateWindow(pyglet.window.Window):
         spec.loader.exec_module(sketch)
         try:
             sketch.KeyPressed()
-        except:
+        except AttributeError:
             pass
 
         if modifiers == 0:
             try:
                 sketch.KeyTyped()
-            except:
+            except AttributeError:
                 pass
 
     def on_key_release(self,symbol,modifiers):
@@ -64,7 +64,7 @@ class CreateWindow(pyglet.window.Window):
         spec.loader.exec_module(sketch)
         try:
             sketch.KeyReleased()
-        except:
+        except AttributeError:
             pass
 
 class Vector:

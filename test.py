@@ -5,13 +5,18 @@ from random import randint
 def setup():
     CreateWindow(640, 480)
     background(name="white")
-
+    global r
+    r = 0
 
 def draw():
+    global r
+    # print(r)
     fill(name="red")
     translate(100, 100)
-    rotate(HALF_PI/2)
+    rotate(r)
     rect(0, 0, 50, 50)
 
 def KeyPressed():
-	print(key)
+    global r
+    r += 1
+    print(r)
