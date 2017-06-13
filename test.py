@@ -3,7 +3,8 @@ from random import randint
 
 
 def setup():
-	CreateWindow(640,480)
+	window2 = CreateWindow(640,480)
+	window1 = CreateWindow(640,480).select()
 	background(name="lightpink")
 
 def draw():

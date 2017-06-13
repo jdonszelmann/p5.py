@@ -11,7 +11,13 @@ class CreateWindow(pyglet.window.Window):
         Globals.WINDOWMANAGER.add(self)
 
     def select():
-        WINDOWMANAGER.selectedwindow = self
+        Globals.WINDOWMANAGER.selectedwindow = self
+
+    @property
+    def selected():
+        if Globals.WINDOWMANAGER.selectedwindow == self:
+            return True
+        return False
 
     def on_close(self):
         Globals.WINDOWMANAGER.remove(self)
@@ -21,6 +27,7 @@ class CreateWindow(pyglet.window.Window):
         pyglet.gl.glClearColor(*self.drawsettings.backgroundcolor.get(True))
         self.clear()
         self.batch.draw()
+
 
 
 
