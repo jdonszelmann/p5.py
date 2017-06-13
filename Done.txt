@@ -20,7 +20,7 @@ colorMode()
 # fill()
 noFill()
 noStroke()
-# stroke()
+stroke()
 
 Shape
 2D Primitives:
@@ -30,18 +30,18 @@ ellipse()
 line()
 # point()
 quad()
-rect()
-triangle()
+# rect()
+# triangle()
 
 Attributes:
 
 ellipseMode()
 noSmooth()
-# rectMode()
+rectMode()
 smooth()
 strokeCap()
 strokeJoin()
-# strokeWeight()
+strokeWeight()
 
 Curves:
 
@@ -92,11 +92,11 @@ Structure
 preload()
 # setup()
 # draw()
-# remove()
-# noLoop()
-# loop()
-# push() UNTESTED
-# pop() UNTESTED
+remove()
+noLoop()
+loop()
+push()
+pop()
 redraw()
 
 Environment:
@@ -121,30 +121,19 @@ getURL()
 getURLPath()
 getURLParams()
 
-DOM:
-
-p5.Element
-
-Rendering:
-
-createCanvas()
-resizeCanvas()
-noCanvas()
-createGraphics()
-blendMode()
 
 Transform:
 
 applyMatrix()
 resetMatrix()
-rotate()
+# rotate()
 rotateX()
 rotateY()
 rotateZ()
 scale()
 shearX()
 shearY()
-translate()
+# translate()
 
 Events:
 
@@ -170,13 +159,13 @@ deviceShaken()
 
 Keyboard:
 
-keyIsPressed
-key
-keyCode
-keyPressed()
-keyReleased()
-keyTyped()
-keyIsDown()
+# keyIsPressed
+# key
+# keyCode
+# keyPressed()
+# keyReleased()
+# keyTyped()
+# keyIsDown()
 
 Mouse:
 
@@ -259,8 +248,8 @@ year()
 
 Math:
 
-createVector()
-p5.Vector
+# createVector()
+# p5.Vector
 
 Calculation:
 
