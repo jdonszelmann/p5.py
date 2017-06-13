@@ -40,7 +40,6 @@ class Batch():
         self.batch.add(*args, **kwargs)
 
     def clear(self):
-        print("hi")
         self.batch = pyglet.graphics.Batch()
 
 

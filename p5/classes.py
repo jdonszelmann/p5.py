@@ -1,7 +1,7 @@
 from .globals import Globals
 from p5.core import Batch, DrawSettings
 import pyglet, importlib
-
+import math
 
 class CreateWindow(pyglet.window.Window):
     def __init__(self,w=Globals.DEFAULTWIDTH,h = Globals.DEFAULTHEIGHT,resizable=True):
@@ -253,7 +253,7 @@ class Vector:
         return math.acos(self.inproduct(other) / (self.magnitude * other.magnitude))
 
     def __len__(self):
-        return
+        return 3
 
     def to_vertice(self):
         return self.x, self.y, self.z

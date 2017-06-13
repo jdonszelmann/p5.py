@@ -9,8 +9,9 @@ def setup():
 
 def draw():
     fill(name="red")
-    point(randint(0, 50), randint(0, 50))
-    rect(200, 200, 50, 50)
+    translate(100, 100)
+    rotate(HALF_PI/2)
+    rect(0, 0, 50, 50)
 
 def KeyPressed():
 	print(key)
