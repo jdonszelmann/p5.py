@@ -87,7 +87,7 @@ def fill(*args, **kwargs):
         if type(value) == Color:
             Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = value
             return
-        Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = Color(*args, **kwargs)
+    Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = Color(*args, **kwargs)
 
 
 # screen commands

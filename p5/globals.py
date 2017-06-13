@@ -15,6 +15,7 @@ class globalvars:
     DEFAULTHEIGHT = 480
     MODE = "2D"
     WINDOWMANAGER = WindowManager()
+    KEYPRESSED = False
 
 # ------------------------------------------------------------------------
 # declaration of constants
