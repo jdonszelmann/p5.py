@@ -1,6 +1,6 @@
 from .globals import Globals
 from p5.core import Batch, DrawSettings
-import pyglet
+import pyglet, importlib
 
 
 class CreateWindow(pyglet.window.Window):
@@ -36,14 +36,36 @@ class CreateWindow(pyglet.window.Window):
             else: p5.globals.keycode.set(None)
         except TypeError:
             p5.globals.keycode.set(None)
-        p5.globals.key.set(key.symbol_string(symbol))
+        p5.globals.key.set(key.symbol_string(symbol).replace("_",""))
         if modifiers != 0:
             p5.globals.modifiers.set(key.modifiers_string(modifiers).replace("|",",").replace("MOD_",""))
         else:
              p5.globals.modifiers.set(None)
-        
+        p5.globals.keyispressed.set(True)
+        spec = importlib.util.spec_from_file_location("", Globals.FILE)
+        sketch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sketch)
+        try:
+            sketch.KeyPressed()
+        except:
+            pass
 
+        if modifiers == 0:
+            try:
+                sketch.KeyTyped()
+            except:
+                pass
 
+    def on_key_release(self,symbol,modifiers):
+        import p5.globals
+        p5.globals.keyispressed.set(False)
+        spec = importlib.util.spec_from_file_location("", Globals.FILE)
+        sketch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sketch)
+        try:
+            sketch.KeyReleased()
+        except:
+            pass
 
 class Vector:
     DECIMAL_PRECISION = 6

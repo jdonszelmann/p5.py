@@ -70,3 +70,4 @@ class Variable:
 keycode = Variable(None)
 key = Variable(None)
 modifiers = Variable(None)
+keyispressed = Variable(False)
