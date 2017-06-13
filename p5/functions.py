@@ -14,7 +14,7 @@ def point(x,y):
     print(Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
     Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,None,
         ('v2i', (x,y)),
-        ('c4f',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
+        ('c4f',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
     )
 
 

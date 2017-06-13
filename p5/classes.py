@@ -10,6 +10,9 @@ class CreateWindow(pyglet.window.Window):
         super().__init__(w,h,resizable=resizable)
         Globals.WINDOWMANAGER.add(self)
 
+    def select():
+        WINDOWMANAGER.selectedwindow = self
+
     def on_close(self):
         Globals.WINDOWMANAGER.remove(self)
         self.close()
