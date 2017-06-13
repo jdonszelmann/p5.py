@@ -1,6 +1,6 @@
 import pyglet, inspect, importlib.util
 from pyglet.gl import glEnable, glShadeModel, GL_SMOOTH, GL_TEXTURE_2D
-from .globals import Globals
+from .globals import *
 from .core import WindowManager
 from .classes import *
 from .functions import *

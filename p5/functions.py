@@ -20,7 +20,7 @@ def point(x,y):
 def rect(x, y, w, h):
     line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokecolor.get()
     fill_collor = Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get()
-    points = (x,y,x+w, y,x, y+h,x+w, y+h)
+    points = (x,y,x+w, y,x+w, y+h,x, y+h)
     
     Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_QUADS, None,
                                                    ('v2f', points),

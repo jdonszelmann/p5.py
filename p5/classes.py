@@ -28,7 +28,13 @@ class CreateWindow(pyglet.window.Window):
         self.clear()
         self.batch.draw()
 
-
+    def on_key_press(self,symbol, modifiers):
+        import p5.globals
+        from pyglet.window import key
+        p5.globals.keycode.set(symbol)
+        p5.globals.key.set(key.symbol_string(symbol))
+        p5.globals.modifiers.set(key.modifiers_string(modifiers))
+        
 
 
 
