@@ -11,10 +11,11 @@ def CreateVector(*args, **kwargs):
 # def rect(x1,y1,x2,y2):
 #
 def point(x,y):
+    print(Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
     Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS,None,
-		('v2i', (x,y)),
-		('c4b',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
-	)
+        ('v2i', (x,y)),
+        ('c4f',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
+    )
 
 
 def rect(x,y,w,h):
