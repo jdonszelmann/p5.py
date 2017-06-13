@@ -11,4 +11,4 @@ def draw():
     fill(name="red")
     point(randint(0, 50), randint(0, 50))
     rect(200, 200, 50, 50)
-    print(keycode)
+    print(modifiers)

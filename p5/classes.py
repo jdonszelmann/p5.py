@@ -31,9 +31,16 @@ class CreateWindow(pyglet.window.Window):
     def on_key_press(self,symbol, modifiers):
         import p5.globals
         from pyglet.window import key
-        p5.globals.keycode.set(symbol)
+        try:
+            if modifiers == 0: p5.globals.keycode.set(ord(key.symbol_string(symbol)))
+            else: p5.globals.keycode.set(None)
+        except TypeError:
+            p5.globals.keycode.set(None)
         p5.globals.key.set(key.symbol_string(symbol))
-        p5.globals.modifiers.set(key.modifiers_string(modifiers))
+        if modifiers != 0:
+            p5.globals.modifiers.set(key.modifiers_string(modifiers).replace("|",",").replace("MOD_",""))
+        else:
+             p5.globals.modifiers.set(None)
         
 
 
