@@ -9,9 +9,9 @@ rotation = 0
 
 def _get_coords(x, y):
     global adjust_x, adjust_y, rotation
-    v = Vector(x + adjust_x, y+adjust_y)
+    v = Vector(x, y)
     v.rotate('z', rotation)
-    return v.x, v.y
+    return v.x + adjust_x, v.y + adjust_y
 
 
 def CreateVector(*args, **kwargs):
@@ -58,6 +58,7 @@ def translate(x, y):
     adjust_y = y
 
 def rotate(rad):
+    global rotation
     rotation = rad
 
 
