@@ -5,6 +5,8 @@ from .core import WindowManager
 from .classes import *
 from .functions import *
 
+from time import sleep
+
 class Init:
     def __init__(self, setup=None, preload=None, draw=None):
         # list functions from main file to be called
@@ -44,7 +46,6 @@ class Init:
             for window in Globals.WINDOWMANAGER.windows:
                 # draw background
                 pyglet.gl.glClearColor(*window.drawsettings.backgroundcolor.get())
-
                 window.window.clear()
 
             # call draw from sketch
@@ -53,6 +54,7 @@ class Init:
             # update all windows
             for window in Globals.WINDOWMANAGER.windows:
                 # draw the batch class
+                window.window.switch_to()
                 window.batch.draw()
                 window.window.dispatch_events()
                 window.window.flip()

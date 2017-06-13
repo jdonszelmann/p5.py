@@ -1,7 +1,6 @@
 from pyglet.gl import *
 
 
-
 class WindowManager:
     def __init__(self):
         self.windows = []
@@ -15,6 +14,7 @@ class WindowManager:
         return win
 
     def remove(self, window):
+        from .globals import Globals
         self.windows.remove(window)
         window.window.close()
         if len(self.windows) == 0:

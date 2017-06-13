@@ -7,7 +7,7 @@ from .core import WindowManager
 # ------------------------------------------------------------------------
 # declaration of global vars
 
-class Globals:
+class globalvars:
     FPS = 60.0
     FILE = None
     RUNNING = True
@@ -18,6 +18,7 @@ class Globals:
 
 # ------------------------------------------------------------------------
 # declaration of constants
+Globals = globalvars()
 
 
 # geometry

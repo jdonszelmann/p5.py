@@ -15,10 +15,7 @@ def point(x,y):
 		('v2i', (10, 15)),
 		('c4b',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get())
 	)
-	# windowmanager.selectedwindow.batch.add(2, pyglet.gl.GL_POINTS,
-	# 										('v2i', (10, 15, 30, 35)),
-	# 										('c3B',(0,1,0))
-	# 										)
+
 
 
 # drawing propertird such as basckround, fill, stroke etc.
@@ -28,7 +25,7 @@ def background(*args, **kwargs):
 
     for i in args:
         if type(i) == Color:
-            Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = color
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = i
             return
     for key, value in kwargs.items():
         if type(value) == Color:
@@ -42,7 +39,7 @@ def fill(*args, **kwargs):
 
     for i in args:
         if type(i) == Color:
-            Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = color
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = i
             return
     for key, value in kwargs.items():
         if type(value) == Color:
