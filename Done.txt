@@ -15,7 +15,7 @@ saturation()
 Setting:
 
 # background()
-clear()
+# clear()
 colorMode()
 # fill()
 noFill()
@@ -41,7 +41,7 @@ rectMode()
 smooth()
 strokeCap()
 strokeJoin()
-strokeWeight()
+# strokeWeight()
 
 Curves:
 
@@ -374,5 +374,3 @@ normalMaterial()
 texture()
 ambientMaterial()
 specularMaterial()
- 
-p5.RendererGL

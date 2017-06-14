@@ -19,6 +19,7 @@ class WindowManager:
 
 
 class DrawSettings:
+    storesettings = []
     def __init__(self):
         from p5.classes import Color
         # color related properties
@@ -28,6 +29,13 @@ class DrawSettings:
         # value related properties
         self.strokeweight = 1
 
+    def push(self):
+        self.storesettings.insert(0,{key:value for key, value in self.__dict__.items() if not key.startswith('__') and not callable(key)})
+
+    def pop(self):
+        a = self.storesettings.pop()
+        for key,value in a.items():
+            setattr(self,key,value)
 
 class Batch():
     def __init__(self):

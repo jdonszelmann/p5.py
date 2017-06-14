@@ -8,16 +8,10 @@ def setup():
     caption("hey!")
     fullscreen()
 
-c = colors()
-i = 0
 
 def draw():
-    global i, c
-    i += 0.1
-    try:
-        background(name=c[int(i)])
-    except:
-        stop()
+    pass
+
 
 def KeyPressed():
     pass
