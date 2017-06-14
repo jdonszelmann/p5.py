@@ -71,7 +71,6 @@ def _CreateWindow(*args, **kwargs):
     global KeyPressed, KeyTyped, KeyReleased
     window = cw(*args, keypressed=KeyPressed, keytyped=KeyTyped, keyreleased=KeyReleased)
     run = True
-    print('hi')
     return window
 
 

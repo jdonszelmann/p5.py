@@ -1,8 +1,9 @@
-import pyglet
+import pyglet, sys
 from .globals import Globals
 from .classes import Color
 from p5.classes import Vector
 from p5.core import *
+from .color import Colors
 
 adjust_x, adjust_y = 0, 0
 rotation = 0
@@ -145,3 +146,18 @@ def clear():
     Globals.WINDOWMANAGER.selectedwindow.clear()
     Globals.WINDOWMANAGER.selectedwindow.batch.clear()
 
+def colors():
+    l = []
+    for i in list(Colors.__dict__.keys()):
+        if not i.startswith("_") and i is not "getname":
+            l.append(i)
+    return l
+
+def stop():
+    sys.exit()
+
+def caption(caption):
+    Globals.WINDOWMANAGER.selectedwindow.set_caption(caption)
+
+def fullscreen():
+    Globals.WINDOWMANAGER.selectedwindow.maximize()

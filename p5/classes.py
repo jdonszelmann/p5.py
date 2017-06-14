@@ -6,18 +6,14 @@ import math
 
 class _CreateWindow(pyglet.window.Window):
     def __init__(self, w=Globals.DEFAULTWIDTH, h=Globals.DEFAULTHEIGHT, resizable=True, keypressed=0,
-                 keyreleased=0, keytyped=0):
+                 keyreleased=0, keytyped=0,caption="p5.py"):
         self.batch = Batch()
         self.drawsettings = DrawSettings()
         self.KeyTyped = keytyped
         self.KeyReleased = keyreleased
         self.KeyPressed = keypressed
-        super().__init__(w, h, resizable=resizable)
+        super().__init__(w, h, resizable=resizable,caption=caption)
         Globals.WINDOWMANAGER.add(self)
-        pyglet.gl.glEnable(pyglet.gl.GL_TEXTURE_2D)
-        pyglet.gl.glShadeModel(pyglet.gl.GL_SMOOTH)
-        pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
-        pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
 
 
     def select(self):
