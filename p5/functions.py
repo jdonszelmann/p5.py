@@ -46,45 +46,42 @@ def triangle(x1, y1, x2, y2, x3, y3):
                                                    )
 
 def test():
-    Globals.WINDOWMANAGER.selectedwindow.batch.batch.add(pyglet.gl.glPointSize(10.0)
-        # disable blending 
-        pyglet.gl.glDisable(pyglet.gl.GL_BLEND)
-        # turn on anti-aliasing
-        pyglet.gl.glEnable(pyglet.gl.GL_POINT_SMOOTH)
-        # enable use of alpha function 
-        pyglet.gl.glEnable(pyglet.gl.GL_ALPHA_TEST) 
-        # alpha comparison 
-        pyglet.gl.glAlphaFunc(pyglet.gl.GL_GREATER, 0.5) 
+    class CustomGroup1(pyglet.graphics.Group):
+        def set_state(self):
+            pyglet.gl.glPointSize(10.0)
+            # disable blending 
+            pyglet.gl.glDisable(pyglet.gl.GL_BLEND)
+            # turn on anti-aliasing
+            pyglet.gl.glEnable(pyglet.gl.GL_POINT_SMOOTH)
+            # enable use of alpha function 
+            pyglet.gl.glEnable(pyglet.gl.GL_ALPHA_TEST) 
+            # alpha comparison 
+            pyglet.gl.glAlphaFunc(pyglet.gl.GL_GREATER, 0.5) 
 
-        pyglet.gl.glBegin(pyglet.gl.GL_POINTS) 
-        # draw anti-aliased vertices with the alpha function on.. 
-        pyglet.gl.glVertex2f(50.0, 10.0) 
-        pyglet.gl.glVertex2f(50.0, 30.0) 
-        pyglet.gl.glVertex2f(150.0, 10.0) 
-        pyglet.gl.glVertex2f(150.0, 30.0) 
+    class CustomGroup2(pyglet.graphics.Group):
+        def set_state(self):
+            pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH) 
+            pyglet.gl.glLineWidth(10.0)
 
-        pyglet.gl.glEnd() 
-        pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH) 
+        
+        def unset_state(self):
+            pyglet.gl.glDisable(pyglet.gl.GL_ALPHA_TEST) 
+            pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH)
 
-        pyglet.gl.glLineWidth(10.0) 
-        pyglet.gl.glBegin(pyglet.gl.GL_LINES) 
-        pyglet.gl.glVertex2f(50.0, 10.0) 
-        pyglet.gl.glVertex2f(50.0, 30.0) 
-        pyglet.gl.glVertex2f(150.0, 10.0) 
-        pyglet.gl.glVertex2f(150.0, 30.0) 
 
-        pyglet.gl.glVertex2f(50.0, 10.0) 
-        pyglet.gl.glVertex2f(150.0, 10.0) 
-        pyglet.gl.glVertex2f(50.0, 30.0) 
-        pyglet.gl.glVertex2f(150.0, 30.0) 
-
-        pyglet.gl.glEnd() 
-
-        pyglet.gl.glRectf(50.0, 10.0, 150.0, 30.0) 
-
-        pyglet.gl.glDisable(pyglet.gl.GL_ALPHA_TEST) 
-        pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH)
-    )
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_POINTS,CustomGroup1(),
+                                                    ('v2f',(50,10,50,30,150,10,150,30)),
+                                                    ('c4f', 4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
+                                                    )
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(8,pyglet.gl.GL_LINES,CustomGroup2(),
+                                                    ('v2f',(50,10, 50,30, 150,10, 150,30, 50,10, 150,10, 50,30, 150,30)),
+                                                    ('c4f', 8 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
+                                                    ) 
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(4,pyglet.gl.GL_QUADS,None,
+                                                    ('v2f',(50.0, 10.0,50,30, 150.0, 30.0,150,10)),
+                                                    ('c4f', 4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
+                                                    )
+    
 
 
 # Transformations

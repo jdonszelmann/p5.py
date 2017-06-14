@@ -23,7 +23,7 @@ def draw():
     rotate(math.sin(x)*0.5)
     fill(abs(math.cos(z))*255, abs(math.sin(z))*255, abs(math.cos(z))*255)
     triangle(0,0,100, 0, 50, 50)
-    # test()
+    test()
 
 
 def KeyPressed():
