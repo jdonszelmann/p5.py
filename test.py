@@ -7,8 +7,12 @@ def setup():
     background(name="white")
 
 y, x, z, w = 0, 0, 1, 5
+n = True
+
 
 def draw():
+    global n
+    if n: clear()
     fill(name="red")
     global y, x, z, w
     translate(300, 300)
@@ -22,4 +26,6 @@ def draw():
 
 
 def KeyPressed():
-    clear()
+    global n
+    if n: n = False
+    else: n = True
