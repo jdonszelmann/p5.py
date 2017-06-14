@@ -6,12 +6,12 @@ def setup():
     CreateWindow(640, 480)
     background(name="white")
 
-y, x, z, w = 0, 0, 1, 5
+y, x, z,a, w = 0, 0,0, 1, 5
 n = True
 
 
 def draw():
-    global y, x, z, w, n
+    global y, x, z, a, w, n
     if n: background(abs(math.cos(z))*255, abs(math.sin(z))*255, abs(math.sin(z))*255)
     fill(name="red")
     
@@ -21,9 +21,9 @@ def draw():
     y += 0.1; x += 0.1; z += 0.03
     translate(100, math.cos(y)*40+100)
     rotate(math.sin(x)*0.5)
-    fill(abs(math.cos(z))*255, abs(math.sin(z))*255, abs(math.cos(z))*255)
+    fill(abs(math.cos(z))*255, abs(math.sin(z))*255, abs(math.cos(z))*255,abs(math.cos(a))*255)
     triangle(0,0,100, 0, 50, 50)
-    test()
+    # test()
 
 
 def KeyPressed():

@@ -1,5 +1,5 @@
+import pyglet
 from pyglet.gl import *
-
 
 class WindowManager:
     def __init__(self):
@@ -106,6 +106,33 @@ class _vectorset:
     def round_vectors(self):
         for i in self.vectors:
             i.round_values()
+
+"""
+D = Default = enable textures and smoothen lines
+A = Alpha = enable alpha (opacity)
+
+
+"""
+
+class graphstyle(pyglet.graphics.Group):
+    def __init__(self,state = "DA",lineweight = 1):
+        super().__init__()
+        self.state = state
+        self.lineweight = lineweight
+
+    def set_state(self):
+        pyglet.gl.glLineWidth(self.lineweight)
+        
+        if 'D' in self.state:
+            pyglet.gl.glEnable(pyglet.gl.GL_TEXTURE_2D)
+            pyglet.gl.glShadeModel(pyglet.gl.GL_SMOOTH)
+        
+        if 'A' in self.state:
+            pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
+            pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
+
+    # def unset_state(self):
+    #     pass
 
 
 
