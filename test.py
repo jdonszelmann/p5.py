@@ -9,7 +9,6 @@ def setup():
 y, x, z, w = 0, 0, 1, 5
 
 def draw():
-    clear()
     fill(name="red")
     global y, x, z, w
     translate(300, 300)
@@ -20,15 +19,7 @@ def draw():
     rotate(math.sin(x)*0.5)
     fill(abs(math.cos(z))*255, abs(math.sin(z))*255, abs(math.cos(z))*255)
     triangle(0,0,100, 0, 50, 50)
-    rotate(0)
-    translate(0, w)
-    print(w)
-    rect(0,0, 10, 10)
 
 
 def KeyPressed():
-    global w
-    print(w)
-    w += 1
-    print(w)
-
+    clear()

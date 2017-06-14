@@ -3,22 +3,27 @@ from p5.core import Batch, DrawSettings
 import pyglet, importlib
 import math
 
-class CreateWindow(pyglet.window.Window):
-    def __init__(self,w=Globals.DEFAULTWIDTH,h = Globals.DEFAULTHEIGHT,resizable=True):
+
+class _CreateWindow(pyglet.window.Window):
+    def __init__(self, w=Globals.DEFAULTWIDTH, h=Globals.DEFAULTHEIGHT, resizable=True, keypressed=0,
+                 keyreleased=0, keytyped=0):
         self.batch = Batch()
         self.drawsettings = DrawSettings()
-        super().__init__(w,h,resizable=resizable)
+        self.KeyTyped = keytyped
+        self.KeyReleased = keyreleased
+        self.KeyPressed = keypressed
+        super().__init__(w, h, resizable=resizable)
         Globals.WINDOWMANAGER.add(self)
         pyglet.gl.glEnable(pyglet.gl.GL_TEXTURE_2D)
         pyglet.gl.glShadeModel(pyglet.gl.GL_SMOOTH)
         pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
         pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
 
-    def select():
+    def select(self):
         Globals.WINDOWMANAGER.selectedwindow = self
 
     @property
-    def selected():
+    def selected(self):
         if Globals.WINDOWMANAGER.selectedwindow == self:
             return True
         return False
@@ -32,47 +37,47 @@ class CreateWindow(pyglet.window.Window):
         self.clear()
         self.batch.draw()
 
-    def on_key_press(self,symbol, modifiers):
+    def on_key_press(self, symbol, modifiers):
         import p5.globals
         from pyglet.window import key
         try:
-            if modifiers == 0: p5.globals.keycode.set(ord(key.symbol_string(symbol)))
-            else: p5.globals.keycode.set(None)
+            if modifiers == 0:
+                p5.globals.keycode.set(ord(key.symbol_string(symbol)))
+            else:
+                p5.globals.keycode.set(None)
         except TypeError:
             p5.globals.keycode.set(None)
-        p5.globals.key.set(key.symbol_string(symbol).replace("_",""))
+        p5.globals.key.set(key.symbol_string(symbol).replace("_", ""))
         if modifiers != 0:
-            p5.globals.modifiers.set(key.modifiers_string(modifiers).replace("|",",").replace("MOD_",""))
+            p5.globals.modifiers.set(key.modifiers_string(modifiers).replace("|", ",").replace("MOD_", ""))
         else:
-             p5.globals.modifiers.set(None)
+            p5.globals.modifiers.set(None)
         p5.globals.keyispressed.set(True)
-        spec = importlib.util.spec_from_file_location("", Globals.FILE)
-        sketch = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(sketch)
+        # spec = importlib.util.spec_from_file_location("", Globals.FILE)
+        # sketch = importlib.util.module_from_spec(spec)
+        # spec.loader.exec_module(sketch)
         try:
-            sketch.KeyPressed()
+            self.KeyPressed()
         except AttributeError:
             pass
 
         if modifiers == 0:
             try:
-                sketch.KeyTyped()
+                self.KeyTyped()
             except AttributeError:
                 pass
 
-    def on_key_release(self,symbol,modifiers):
+    def on_key_release(self, symbol, modifiers):
         import p5.globals
-        p5.globals.keyispressed.set(False)
-        spec = importlib.util.spec_from_file_location("", Globals.FILE)
-        sketch = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(sketch)
         try:
-            sketch.KeyReleased()
+            self.KeyReleased()
         except AttributeError:
             pass
 
+
 class Vector:
     DECIMAL_PRECISION = 6
+
     def __init__(self, x: float = 0, y: float = 0, z: float = 0):
         super().__init__()
         self.x = x
@@ -273,9 +278,8 @@ class Color:
             from p5.color import Colors
             self.r, self.g, self.b = Colors.getname(name)
 
-    def get(self,retfloat = False):
+    def get(self, retfloat=False):
         if retfloat:
-            return (self.r/255,self.g/255,self.b/255,self.a/255)
+            return (self.r / 255, self.g / 255, self.b / 255, self.a / 255)
         else:
-            return (self.r,self.g,self.b,self.a)
-
+            return (self.r, self.g, self.b, self.a)

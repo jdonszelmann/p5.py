@@ -2,10 +2,12 @@ import pyglet, inspect, importlib.util
 from pyglet.gl import glEnable, glShadeModel, GL_SMOOTH, GL_TEXTURE_2D
 from .globals import *
 from .core import WindowManager
+from .classes import _CreateWindow as cw
 from .classes import *
 from .functions import *
 
 from time import sleep
+
 
 class Init:
     def __init__(self, setup=None, preload=None, draw=None):
@@ -18,7 +20,7 @@ class Init:
         spec = importlib.util.spec_from_file_location("", Globals.FILE)
         sketch = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(sketch)
-
+        global KeyTyped, KeyPressed, KeyReleased
         try:
             self.setup = sketch.setup
         except:
@@ -27,6 +29,21 @@ class Init:
             self.draw = sketch.draw
         except:
             raise SystemExit("could not find draw function, p5.py failed to start.")
+        try:
+            self.KeyPressed = KeyPressed = sketch.KeyPressed
+        except:
+            print("No keyPressed")
+            self.KeyPressed = KeyPressed = lambda: 0
+        try:
+            self.KeyReleased = KeyReleased = sketch.KeyReleased
+        except:
+            print("No keyReleased")
+            self.KeyReleased = KeyReleased = lambda: 0
+        try:
+            self.KeyTyped = KeyTyped = sketch.KeyTyped
+        except:
+            print("No keyTyped")
+            self.KeyTyped = KeyTyped = lambda: 0
 
         # start p5py
         self.start()
@@ -39,34 +56,24 @@ class Init:
         glShadeModel(GL_SMOOTH)  # smooth shading of polygons
 
         event_loop = pyglet.app.EventLoop()
-            
+
         def update(dt):
             self.draw()
             if not Globals.RUNNING:
                 event_loop.exit()
-        pyglet.clock.set_fps_limit(1/Globals.FPS)
-        pyglet.clock.schedule_interval(update, 1/Globals.FPS)
+
+        pyglet.clock.set_fps_limit(1 / Globals.FPS)
+        pyglet.clock.schedule_interval(update, 1 / Globals.FPS)
         event_loop.run()
 
 
-        # while Globals.RUNNING:
-        #     dt = pyglet.clock.tick()
-        #     pyglet.clock.set_fps_limit(30)
+def _CreateWindow(*args, **kwargs):
+    global KeyPressed, KeyTyped, KeyReleased
+    window = cw(*args, keypressed=KeyPressed, keytyped=KeyTyped, keyreleased=KeyReleased)
+    run = True
+    print('hi')
+    return window
 
-        #     # clear all windows
-        #     for window in Globals.WINDOWMANAGER.windows:
-        #         # draw background
-        #         pyglet.gl.glClearColor(*window.drawsettings.backgroundcolor.get())
-        #         window.window.clear()
 
-        #     # call draw from sketch
-        #     self.draw()
-
-        #     # update all windows
-        #     for window in Globals.WINDOWMANAGER.windows:
-        #         # draw the batch class
-        #         window.window.dispatch_events()
-        #         window.window.dispatch_event('on_draw')
-        #         window.window.flip()
-
+CreateWindow = _CreateWindow
 init = Init()
