@@ -11,10 +11,10 @@ n = True
 
 
 def draw():
-    global n
-    if n: clear()
+    global y, x, z, w, n
+    if n: background(abs(math.cos(z))*255, abs(math.sin(z))*255, abs(math.sin(z))*255)
     fill(name="red")
-    global y, x, z, w
+    
     translate(300, 300)
     rotate(math.sin(x))
     rect(math.sin(y)*50, math.cos(x)*50, 50* (abs(math.cos(y)) + 0.5), 50* (abs(math.sin(x)) + 0.5))
@@ -23,6 +23,7 @@ def draw():
     rotate(math.sin(x)*0.5)
     fill(abs(math.cos(z))*255, abs(math.sin(z))*255, abs(math.cos(z))*255)
     triangle(0,0,100, 0, 50, 50)
+    # test()
 
 
 def KeyPressed():

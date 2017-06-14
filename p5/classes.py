@@ -19,6 +19,7 @@ class _CreateWindow(pyglet.window.Window):
         pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
         pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
 
+
     def select(self):
         Globals.WINDOWMANAGER.selectedwindow = self
 
@@ -36,6 +37,45 @@ class _CreateWindow(pyglet.window.Window):
         pyglet.gl.glClearColor(*self.drawsettings.backgroundcolor.get(True))
         self.clear()
         self.batch.draw()
+        pyglet.gl.glPointSize(10.0); 
+        # disable blending 
+        pyglet.gl.glDisable(pyglet.gl.GL_BLEND); 
+        # turn on anti-aliasing 
+        pyglet.gl.glEnable(pyglet.gl.GL_POINT_SMOOTH); 
+        # enable use of alpha function 
+        pyglet.gl.glEnable(pyglet.gl.GL_ALPHA_TEST); 
+        # alpha comparison 
+        pyglet.gl.glAlphaFunc(pyglet.gl.GL_GREATER, 0.5); 
+
+        pyglet.gl.glBegin(pyglet.gl.GL_POINTS); 
+        # draw anti-aliased vertices with the alpha function on.. 
+        pyglet.gl.glVertex2f(50.0, 10.0); 
+        pyglet.gl.glVertex2f(50.0, 30.0); 
+        pyglet.gl.glVertex2f(150.0, 10.0); 
+        pyglet.gl.glVertex2f(150.0, 30.0); 
+
+        pyglet.gl.glEnd(); 
+        pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH); 
+
+        pyglet.gl.glLineWidth(10.0); 
+        pyglet.gl.glBegin(pyglet.gl.GL_LINES); 
+        pyglet.gl.glVertex2f(50.0, 10.0); 
+        pyglet.gl.glVertex2f(50.0, 30.0); 
+        pyglet.gl.glVertex2f(150.0, 10.0); 
+        pyglet.gl.glVertex2f(150.0, 30.0); 
+
+        pyglet.gl.glVertex2f(50.0, 10.0); 
+        pyglet.gl.glVertex2f(150.0, 10.0); 
+        pyglet.gl.glVertex2f(50.0, 30.0); 
+        pyglet.gl.glVertex2f(150.0, 30.0); 
+
+        pyglet.gl.glEnd(); 
+
+        pyglet.gl.glRectf(50.0, 10.0, 150.0, 30.0); 
+
+        pyglet.gl.glDisable(pyglet.gl.GL_ALPHA_TEST); 
+        pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH);
+
 
     def on_key_press(self, symbol, modifiers):
         import p5.globals
