@@ -4,11 +4,6 @@ from .classes import Color
 from p5.classes import Vector
 from p5.core import *
 from .color import Colors
-<<<<<<< HEAD
-from .math import *
-=======
-import math
->>>>>>> 1ddb3b291fd257beb69cde06737de963b1d7bd57
 
 
 def _get_coords(x, y, coord1, coord2):
