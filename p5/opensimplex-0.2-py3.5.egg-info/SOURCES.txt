@@ -1,0 +1,13 @@
+README.rst
+setup.cfg
+setup.py
+opensimplex/__init__.py
+opensimplex/opensimplex.py
+opensimplex.egg-info/PKG-INFO
+opensimplex.egg-info/SOURCES.txt
+opensimplex.egg-info/dependency_links.txt
+opensimplex.egg-info/not-zip-safe
+opensimplex.egg-info/top_level.txt
+tests/__init__.py
+tests/benchmark_opensimplex.py
+tests/test_opensimplex.py

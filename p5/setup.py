@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='p5.py',
-    version='0.5',
+    version='0.6',
     description = "p5.js but in python! Uses simlar (mostly the same) syntax",
     url='https://github.com/jonay2000/p5.py',
     author='jonathan (jonay2000) and lucas',

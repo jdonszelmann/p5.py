@@ -2,6 +2,7 @@ import math
 from .globals import *
 from p5.classes import Vector
 from random import randint, triangular, seed, gauss
+from opensimplex import OpenSimplex
 
 def cos(val):
 	return math.cos(val)
@@ -96,8 +97,13 @@ def random(low,up):
 		return low[randint(0,len(low)-1)]
 	return triangular(low,up)
 
-def randomseed(val):
+def randomseed(val:int):
+	Globals.RANDOMSEED = val
 	seed(val)
 
 def randomgaussian(mean,dev):
 	return gauss(mean,dev)
+
+def noise(xoff,yoff):
+	tmp = OpenSimplex(seed=Globals.RANDOMSEED)
+	return tmp.noise2d(x=xoff,y=yoff)

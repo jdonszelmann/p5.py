@@ -17,6 +17,7 @@ class globalvars:
     WINDOWMANAGER = WindowManager()
     KEYPRESSED = False
     ANGLEMODE = "RADIANS"
+    RANDOMSEED = 1
 
 # ------------------------------------------------------------------------
 # declaration of constants
