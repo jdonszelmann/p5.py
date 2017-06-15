@@ -34,8 +34,6 @@ class _CreateWindow(pyglet.window.Window):
         self.clear()
         self.batch.draw()
 
-
-
     def on_key_press(self, symbol, modifiers):
         import p5.globals
         from pyglet.window import key
@@ -278,3 +276,16 @@ class Color:
             return (self.r / 255, self.g / 255, self.b / 255, self.a / 255)
         else:
             return (self.r, self.g, self.b, self.a)
+
+
+class text(pyglet.text.Label):
+    def __init__(self,text,x,y):
+        self.txt = text
+        self.batch = Globals.WINDOWMANAGER.selectedwindow.batch.batch
+        super().__init__(text=self.txt,x=x,y=y,batch=self.batch,color=Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get())
+
+    def reload(self):
+        self.__init__()
+
+    def text(self):
+        self.text = text
