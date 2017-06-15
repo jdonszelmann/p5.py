@@ -15,11 +15,30 @@ class _CreateWindow(pyglet.window.Window):
         super().__init__(w, h, resizable=resizable,caption=caption)
         Globals.WINDOWMANAGER.add(self)
 
+    @property
+    def size(self):
+        return Vector(self.get_size())
+
+    def width(self):
+        return self.get_size()[0]
+
+    def height(self):
+        return self.get_size()[1]
+
+    def resize(self,w,h):
+        self.set_size(w,h)
+
+    def on_mouse_leave(x, y):
+        self.onscreen = False
+
+    def on_mouse_enter(x, y):
+        self.onscreen = True
 
     def select(self,select=False):
         Globals.WINDOWMANAGER.selectedwindow = self
         if select:
             self.switch_to()
+            self.activate()
 
     @property
     def selected(self):
