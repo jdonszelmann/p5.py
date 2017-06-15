@@ -17,7 +17,7 @@ def CreateVector(*args, **kwargs):
     return Vector(*args, **kwargs)
 
 def point(x, y):
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS, graphstyle("DA", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS, graphstyle("DAN", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2i', _get_coords(x, y)),
                                                    ('c4f', Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
@@ -40,20 +40,20 @@ def rect(x, y, w, h):
         h *= 2 
  
     points = _get_coords(originalx,originaly,x, y) + _get_coords(originalx,originaly,x + w, y) + _get_coords(originalx,originaly,x + w, y + h) + _get_coords(originalx,originaly,x, y + h)
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_QUADS, graphstyle("DA", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_QUADS, graphstyle("DAN", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', points),
                                                    ('c4f', 4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
 def line(x1,y1,x2,y2):
-    points = _get_coords(x1, y1) + _get_coords(x2, y2)
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(2, pyglet.gl.GL_LINES, graphstyle("DA", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+    points = _get_coords(x1,y2,x1, y1) + _get_coords(x1,y2,x2, y2)
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(2, pyglet.gl.GL_LINES, graphstyle("DAN", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                ('v2f', points),
                                                ('c4f', 2 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get(True))
                                                )    
 
 def triangle(x1, y1, x2, y2, x3, y3):
     line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokecolor.get()
-    points = _get_coords(x1, y1) + _get_coords(x2, y2) + _get_coords(x3, y3)
+    points = _get_coords(x1,y2,x1, y1) + _get_coords(x1,y2,x2, y2) + _get_coords(x1,y2,x3, y3)
     Globals.WINDOWMANAGER.selectedwindow.batch.add(3, pyglet.gl.GL_TRIANGLES, graphstyle("DA", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', points),
                                                    ('c4f', 3 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
@@ -148,7 +148,7 @@ def stroke(*args, **kwargs):
             return
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke = Color(*args, **kwargs)
     
-def strokeWeight(weight:int = 1):
+def strokeweight(weight:int = 1):
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight = weight
 
 def clear():

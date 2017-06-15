@@ -16,8 +16,10 @@ class _CreateWindow(pyglet.window.Window):
         Globals.WINDOWMANAGER.add(self)
 
 
-    def select(self):
+    def select(self,select=False):
         Globals.WINDOWMANAGER.selectedwindow = self
+        if select:
+            self.switch_to()
 
     @property
     def selected(self):
@@ -33,6 +35,7 @@ class _CreateWindow(pyglet.window.Window):
         pyglet.gl.glClearColor(*self.drawsettings.backgroundcolor.get(True))
         self.clear()
         self.batch.draw()
+        # pyglet.text.Label(x=100,y=100,text="hi").draw()
 
     def on_key_press(self, symbol, modifiers):
         import p5.globals
@@ -278,11 +281,20 @@ class Color:
             return (self.r, self.g, self.b, self.a)
 
 
-class text(pyglet.text.Label):
+class text(pyglet.text.HTMLLabel):
     def __init__(self,text,x,y):
         self.txt = text
         self.batch = Globals.WINDOWMANAGER.selectedwindow.batch.batch
-        super().__init__(text=self.txt,x=x,y=y,batch=self.batch,color=Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get())
+        super().__init__(   text="<font color=white size=6><b>{}</b></font>".format(self.txt),
+                            x=x,
+                            y=y,
+                            batch=self.batch,
+                            # color=Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get(),
+                            width=10,
+                            height=10,
+                            anchor_x='center',
+                            anchor_y='center'
+                        )
 
     def reload(self):
         self.__init__()

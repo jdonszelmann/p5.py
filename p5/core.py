@@ -137,11 +137,14 @@ class graphstyle(pyglet.graphics.Group):
         if 'D' in self.state:
             pyglet.gl.glEnable(pyglet.gl.GL_TEXTURE_2D)
             pyglet.gl.glShadeModel(pyglet.gl.GL_SMOOTH)
+            pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH)
         
         if 'A' in self.state:
             pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
             pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
 
+        if 'N' in self.state:
+            pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_NICEST);
     # def unset_state(self):
     #     pass
 
