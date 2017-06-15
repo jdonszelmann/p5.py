@@ -4,6 +4,7 @@ from .classes import Color
 from p5.classes import Vector
 from p5.core import *
 from .color import Colors
+from .math import *
 
 
 def _get_coords(x, y, coord1, coord2):
@@ -95,8 +96,8 @@ def ellipse(x, y, w, h):
         pass
     points = []
     for i in range(ACCURACY):
-        points.append(_get_coords(x, y, start[0] + math.cos(i / ACCURACY * 2 * math.pi) * r_cos,
-                                  start[1] + math.sin(i / ACCURACY * 2 * math.pi) * r_sin))
+        points.append(_get_coords(x, y, start[0] + cos(i / ACCURACY * 2 * PI) * r_cos,
+                                  start[1] + sin(i / ACCURACY * 2 * PI) * r_sin))
     points = [i for sub in points for i in sub]
     Globals.WINDOWMANAGER.selectedwindow.batch.add(len(points) // 2, pyglet.gl.GL_POLYGON, graphstyle("DA",
                                                                                                       Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
@@ -155,13 +156,11 @@ def translate(x, y, absolute=False):
         Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate += Vector(x, y)
 
 
-<<<<<<< HEAD
 def rotate(rad,absolute=False):
     if Globals.ANGLEMODE == "DEGREES":
         rad = radians(rad)
-=======
+
 def rotate(rad, absolute=False):
->>>>>>> 1ddb3b291fd257beb69cde06737de963b1d7bd57
     if absolute:
         Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate = rad
     else:

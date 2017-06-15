@@ -22,9 +22,9 @@ def degrees(val):
 	return (val/pi)*180
 
 def anglemode(val):
-	if val not in ["DEGREES","RADIANS"]
+	if val not in ["DEGREES","RADIANS"]:
 		raise ValueError("Anglemode must be radians/degrees")
-	return Globals.ANGLEMODE = val
+	Globals.ANGLEMODE = val
 
 def acos(val):
 	return math.acos(val)
@@ -50,7 +50,7 @@ def pow(val,exp):
 def norm(val,low,up):
 	return map(val,low,up,0,1)
 
-def map(val,srclow,srcup,destlow,destup)
+def map(val,srclow,srcup,destlow,destup):
 	return (X-srclow)/(srcup-srclow) * (destup-destlow) + destlow
 
 def mag(a,b):
