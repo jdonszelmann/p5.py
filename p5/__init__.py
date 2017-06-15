@@ -62,7 +62,7 @@ class Init:
             for i in Globals.WINDOWMANAGER.windows:
                 i.drawsettings.translate = Vector(0,0)
                 i.drawsettings.rotate = 0
-            self.draw()
+            self.draw(*self.todraw)
             if not Globals.RUNNING:
                 event_loop.exit()
 

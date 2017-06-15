@@ -28,10 +28,10 @@ class _CreateWindow(pyglet.window.Window):
     def resize(self,w,h):
         self.set_size(w,h)
 
-    def on_mouse_leave(x, y):
+    def on_mouse_leave(self,x, y):
         self.onscreen = False
 
-    def on_mouse_enter(x, y):
+    def on_mouse_enter(self,x, y):
         self.onscreen = True
 
     def select(self,select=False):
