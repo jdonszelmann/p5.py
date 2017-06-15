@@ -31,6 +31,7 @@ class DrawSettings:
         self.rectmode = "CORNER"
         self.translate = Vector(0,0)
         self.rotate = 0
+        self.ellipsemode = "CENTER"
 
     def push(self):
         self.storesettings.insert(0,{key:value for key, value in self.__dict__.items() if not key.startswith('__') and not callable(key)})
