@@ -7,6 +7,8 @@ def setup():
     background(name="white")
     caption("hey!")
     fullscreen()
+    minsize(600,400)
+    maxsize(1200,800)
 
 r = 0
 
@@ -21,8 +23,8 @@ def draw():
     translate(200,200)
     rect(400,400,500,500)
 
-    stroke(255)
-    text("hi",100,100)
+    # stroke(255)
+    # text("hi",100,100)
 
 def KeyPressed():
     pass

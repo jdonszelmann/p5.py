@@ -181,3 +181,9 @@ def rectmode(mode):
     if mode.upper() not in ["CENTER","RADIUS","CORNER","CORNERS"]:
         raise ValueError("rectmode can be: {}".format('"CENTER","RADIUS","CORNER","CORNERS"'))
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode = mode
+
+def maxsize(x,y):
+    Globals.WINDOWMANAGER.selectedwindow.set_maximum_size(x,y)
+
+def minsize(x,y):
+    Globals.WINDOWMANAGER.selectedwindow.set_minimum_size(x,y)
