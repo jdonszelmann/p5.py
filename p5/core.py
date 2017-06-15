@@ -21,13 +21,16 @@ class WindowManager:
 class DrawSettings:
     storesettings = []
     def __init__(self):
-        from p5.classes import Color
+        from p5.classes import Color,Vector
         # color related properties
-        self.strokecolor = Color(255, 255, 255)
+        self.stroke = Color(255, 255, 255)
         self.backgroundcolor = Color(255, 0, 255)
         self.fillcolor = Color(255, 255, 255)
         # value related properties
         self.strokeweight = 1
+        self.rectmode = "CORNER"
+        self.translate = Vector(0,0)
+        self.rotate = 0
 
     def push(self):
         self.storesettings.insert(0,{key:value for key, value in self.__dict__.items() if not key.startswith('__') and not callable(key)})

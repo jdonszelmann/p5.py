@@ -5,14 +5,13 @@ from p5.classes import Vector
 from p5.core import *
 from .color import Colors
 
-adjust_x, adjust_y = 0, 0
-rotation = 0
-
-def _get_coords(x, y):
-    global adjust_x, adjust_y, rotation
-    v = Vector(x, y)
-    v.rotate('z', rotation)
-    return v.x + adjust_x, v.y + adjust_y
+def _get_coords(x, y, coord1,coord2):
+    v = Vector(coord1,coord2)
+    v -= Vector(x,y)
+    v.rotate('z', Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate)
+    v += Vector(x,y)
+    v += Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate
+    return v.x,v.y
 
 def CreateVector(*args, **kwargs):
     return Vector(*args, **kwargs)
@@ -24,12 +23,33 @@ def point(x, y):
                                                    )
 # Shapes
 def rect(x, y, w, h):
-    line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokecolor.get()
-    points = _get_coords(x, y) + _get_coords(x + w, y) + _get_coords(x + w, y + h) + _get_coords(x, y + h)
+    originalx,originaly = x,y
+    line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get()
+    if  Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode == "CORNER" or Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode == None:
+        pass
+    if  Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode == "CORNERS":
+        w = abs(x - w)
+        h = abs(y - h)
+    if  Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode == "CENTER":
+        x -= w//2
+        y -= h//2
+    if  Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode == "RADIUS":
+        x -= w
+        y -= h
+        w *= 2
+        h *= 2 
+ 
+    points = _get_coords(originalx,originaly,x, y) + _get_coords(originalx,originaly,x + w, y) + _get_coords(originalx,originaly,x + w, y + h) + _get_coords(originalx,originaly,x, y + h)
     Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_QUADS, graphstyle("DA", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', points),
                                                    ('c4f', 4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
+def line(x1,y1,x2,y2):
+    points = _get_coords(x1, y1) + _get_coords(x2, y2)
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(2, pyglet.gl.GL_LINES, graphstyle("DA", Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+                                               ('v2f', points),
+                                               ('c4f', 2 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get(True))
+                                               )    
 
 def triangle(x1, y1, x2, y2, x3, y3):
     line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokecolor.get()
@@ -75,14 +95,21 @@ def triangle(x1, y1, x2, y2, x3, y3):
 #                                                     ('c4f', 4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
 #                                                     )
     
-def translate(x, y):
-    global adjust_y, adjust_x
-    adjust_x = x
-    adjust_y = y
+def translate(x, y,absolute=False):
+    if absolute:
+        if type(x) == Vector:
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate = x
+        Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate = Vector(x,y)
+    else:
+        if type(x) == Vector:
+            Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate += x
+        Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate += Vector(x,y)
 
-def rotate(rad):
-    global rotation
-    rotation = rad
+def rotate(rad,absolute=False):
+    if absolute:
+        Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate = rad
+    else:
+        Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate += rad
 
 def background(*args, **kwargs):
     from p5.classes import Color
@@ -120,7 +147,7 @@ def stroke(*args, **kwargs):
             Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke = value
             return
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke = Color(*args, **kwargs)
-
+    
 def strokeWeight(weight:int = 1):
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight = weight
 
@@ -149,3 +176,8 @@ def push():
 
 def pop():
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.pop()
+
+def rectmode(mode):
+    if mode.upper() not in ["CENTER","RADIUS","CORNER","CORNERS"]:
+        raise ValueError("rectmode can be: {}".format('"CENTER","RADIUS","CORNER","CORNERS"'))
+    Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode = mode

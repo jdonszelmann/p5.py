@@ -8,10 +8,17 @@ def setup():
     caption("hey!")
     fullscreen()
 
+r = 0
 
 def draw():
-    pass
-
+    global r
+    background()
+    r += 0.01
+    rotate(r)
+    rectmode("CORNERS")
+    fill(255)
+    translate(200,200)
+    rect(400,400,500,500)
 
 def KeyPressed():
     pass

@@ -58,6 +58,9 @@ class Init:
         event_loop = pyglet.app.EventLoop()
 
         def update(dt):
+            for i in Globals.WINDOWMANAGER.windows:
+                i.drawsettings.translate = Vector(0,0)
+                i.drawsettings.rotate = 0
             self.draw()
             if not Globals.RUNNING:
                 event_loop.exit()

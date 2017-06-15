@@ -52,9 +52,6 @@ class _CreateWindow(pyglet.window.Window):
         else:
             p5.globals.modifiers.set(None)
         p5.globals.keyispressed.set(True)
-        # spec = importlib.util.spec_from_file_location("", Globals.FILE)
-        # sketch = importlib.util.module_from_spec(spec)
-        # spec.loader.exec_module(sketch)
         try:
             self.KeyPressed()
         except AttributeError:
@@ -179,22 +176,13 @@ class Vector:
         return new_vector
 
     def add(self, other):
-        self.x += other.x
-        self.y += other.y
-        self.z += other.z
-        return self
+        return self.__class__(self.x + val, self.y + val,self.z + val)
 
     def sub(self, other):
-        self.x -= other.x
-        self.y -= other.y
-        self.z -= other.z
-        return self
+        return self.__class__(self.x - val, self.y - val,self.z - val)
 
     def mult(self, val):
-        self.x *= val
-        self.y *= val
-        self.z *= val
-        return self
+        return self.__class__(self.x * val, self.y * val,self.z * val)
 
     def rotate(self, axis='x', by=0):
         new_vector = Vector()
@@ -268,14 +256,22 @@ class Vector:
 
 
 class Color:
-    def __init__(self, r: int = 255, g: int = 255, b: int = 255, a: int = 255, name: str = None):
+    def __init__(self, r: int = None, g: int = None, b: int = None, a: int = 255, name: str = None):
         self.r = r
         self.g = g
         self.b = b
+        if self.r == None and self.g == None and self.b == None and name == None:
+            self.r = 51
+        if self.r != None and self.g == None and self.b == None and name == None:
+            self.g = self.r
+        if self.r != None and self.g != None and self.b == None and name == None:   
+            self.b = self.g
         self.a = a
         if name != None:
             from p5.color import Colors
             self.r, self.g, self.b = Colors.getname(name)
+
+
 
     def get(self, retfloat=False):
         if retfloat:
