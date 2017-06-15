@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: p5.py
+Version: 0.5
+Summary: p5.js but in python! Uses simlar (mostly the same) syntax
+Home-page: https://github.com/jonay2000/p5.py
+Author: jonathan (jonay2000) and lucas
+Author-email: jonabent@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: p5.py p5.js p5 processing graphcis
+Platform: UNKNOWN

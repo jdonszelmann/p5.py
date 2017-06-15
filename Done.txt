@@ -237,7 +237,9 @@ p5.Table
 p5.TableRow
 XML
 p5.XML
+
 Time & Date
+
 day()
 hour()
 minute()
@@ -253,23 +255,23 @@ Math:
 
 Calculation:
 
-abs()
-ceil()
-constrain()
-dist()
-exp()
-floor()
-lerp()
-log()
-mag()
-map()
-max()
-min()
-norm()
-pow()
-round()
-sq()
-sqrt()
+# abs()
+# ceil()
+# constrain()
+# dist()	
+# exp()
+# floor()
+# lerp()
+# log()
+# mag()
+# map()
+# max()
+# min()
+# norm()
+# pow()
+# round()
+# sq()
+# sqrt()
 
 Noise:
 
@@ -279,22 +281,22 @@ noiseSeed()
 
 Random:
 
-randomSeed()
-random()
-randomGaussian()
+# randomSeed()
+# random()
+# randomGaussian()
 
 Trigonometry:
 
-acos()
-asin()
-atan()
-atan2()
-cos()
-sin()
-tan()
-degrees()
-radians()
-angleMode()
+# acos()
+# asin()
+# atan()
+# atan2()
+# cos()
+# sin()
+# tan()
+# degrees()
+# radians()
+# angleMode()
 
 Typography
 

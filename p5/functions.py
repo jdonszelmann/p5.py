@@ -4,6 +4,7 @@ from .classes import Color
 from p5.classes import Vector
 from p5.core import *
 from .color import Colors
+from .math import *
 
 def _get_coords(x, y, coord1,coord2):
     v = Vector(coord1,coord2)
@@ -106,6 +107,8 @@ def translate(x, y,absolute=False):
         Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate += Vector(x,y)
 
 def rotate(rad,absolute=False):
+    if Globals.ANGLEMODE == "DEGREES":
+        rad = radians(rad)
     if absolute:
         Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate = rad
     else:

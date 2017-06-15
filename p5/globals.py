@@ -16,6 +16,7 @@ class globalvars:
     MODE = "2D"
     WINDOWMANAGER = WindowManager()
     KEYPRESSED = False
+    ANGLEMODE = "RADIANS"
 
 # ------------------------------------------------------------------------
 # declaration of constants

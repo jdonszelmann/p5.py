@@ -126,7 +126,7 @@ A = Alpha = enable alpha (opacity)
 """
 
 class graphstyle(pyglet.graphics.Group):
-    def __init__(self,state = "DA",lineweight = 1):
+    def __init__(self,state = "DAN",lineweight = 1):
         super().__init__()
         self.state = state
         self.lineweight = lineweight

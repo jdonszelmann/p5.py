@@ -5,6 +5,7 @@ from .core import WindowManager
 from .classes import _CreateWindow as cw
 from .classes import *
 from .functions import *
+from .math import *
 
 from time import sleep
 
