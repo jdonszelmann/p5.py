@@ -1,29 +1,29 @@
+# Functions to implement
+## Colors:
 
-Colors:
+* alpha()
+* blue()
+* brightness()
+* color()
+* green()
+* hue()
+* lerpColor()
+* lightness()
+* red()
+* saturation()
 
-alpha()
-blue()
-brightness()
-color()
-green()
-hue()
-lerpColor()
-lightness()
-red()
-saturation()
+## Setting:
 
-Setting:
+* ~~background()~~
+* ~~clear()~~
+* colorMode()
+* ~~fill()~~
+* noFill()
+* noStroke()
+* stroke()
 
-# background()
-# clear()
-colorMode()
-# fill()
-noFill()
-noStroke()
-stroke()
-
-Shape
-2D Primitives:
+## Shape
+### 2D Primitives:
 
 arc()
 ellipse()
@@ -33,7 +33,7 @@ quad()
 # rect()
 # triangle()
 
-Attributes:
+### Attributes:
 
 ellipseMode()
 noSmooth()
@@ -81,11 +81,11 @@ torus()
 
 # Constants:
 
-# HALF_PI
-# PI
-# QUARTER_PI
-# TAU
-# TWO_PI
+HALF_PI
+PI
+QUARTER_PI
+TAU
+TWO_PI
 
 Structure
 
