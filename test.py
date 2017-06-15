@@ -1,5 +1,4 @@
 from p5 import *
-from random import randint
 import math
 
 def setup():
@@ -19,15 +18,7 @@ def draw():
     rotate(math.cos(y)*TAU)
     ellipse(0, 0, abs(math.cos(y)*50)+20, abs(math.sin(x)*30)+20)
     x += 0.05; y += 0.05; col += 0.1
-    # strokeweight(1)
-    # line(0,0,100,100)
-    # rotate(col)
-    # rectmode("CENTER")
-    # fill(255)
-    # translate(200,200)
-    #rect(400,400,300,300)
-    # stroke(255)
-    # #text("hi",100,100)
+
 def KeyPressed():
     global n
     if n: n = False
