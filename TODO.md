@@ -275,9 +275,9 @@ Calculation:
 
 Noise:
 
-noise()
+# noise()
 noiseDetail()
-noiseSeed()
+# noiseSeed()
 
 Random:
 
@@ -310,8 +310,8 @@ textWidth()
 
 Loading & Displaying:
 
-text()
-textFont()
+# text()
+# textFont()
 
 Font:
 

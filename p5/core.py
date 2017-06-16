@@ -136,7 +136,7 @@ class graphstyle(pyglet.graphics.Group):
         pyglet.gl.glLineWidth(self.lineweight)
         
         if 'D' in self.state:
-            pyglet.gl.glEnable(pyglet.gl.GL_TEXTURE_2D)
+            # pyglet.gl.glEnable(pyglet.gl.GL_TEXTURE_2D)
             pyglet.gl.glShadeModel(pyglet.gl.GL_SMOOTH)
             pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH)
         

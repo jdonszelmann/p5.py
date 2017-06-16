@@ -20,6 +20,17 @@ def CreateVector(*args, **kwargs):
     return Vector(*args, **kwargs)
 
 
+def text(txt,x,y"):
+    pyglet.text.Label(  txt,
+                        batch=batch,
+                        x=x,
+                        y=y,
+                        font_size = Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.size,
+                        font_name = Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.type
+                    )
+
+
+
 def point(x, y):
     Globals.WINDOWMANAGER.selectedwindow.batch.add( 1, pyglet.gl.GL_POINTS, graphstyle("DAN",Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', _get_coords(x,y,x, y)),
@@ -251,4 +262,7 @@ def maxsize(x, y):
 
 
 def minsize(x, y):
-    Globals.WINDOWMANAGER.selectedwindow.set_minimum_size(x, y)
+    "HI!"set_minimum_size(x, y)
+
+def draw_fps():
+    Globals.WINDOWMANAGER.selectedwindow.draw_fps = not Globals.WINDOWMANAGER.selectedwindow.draw_fps

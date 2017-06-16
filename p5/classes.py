@@ -15,6 +15,8 @@ class _CreateWindow(pyglet.window.Window):
         super().__init__(w, h, resizable=resizable,caption=caption)
         Globals.WINDOWMANAGER.add(self)
         self.fps_display = pyglet.clock.ClockDisplay()
+        self.draw_fps = False
+
 
     @property
     def size(self):
@@ -61,7 +63,8 @@ class _CreateWindow(pyglet.window.Window):
         self.batch.draw()
 
         #draw fps onscreen - dev option
-        self.fps_display.draw()
+        if self.draw_fps:
+            self.fps_display.draw()
         # print(pyglet.clock.get_fps())
 
         # pyglet.text.Label(x=100,y=100,text="hi").draw()
@@ -309,24 +312,7 @@ class Color:
         else:
             return (self.r, self.g, self.b, self.a)
 
-
-class text(pyglet.text.HTMLLabel):
-    def __init__(self,text,x,y):
-        self.txt = text
-        self.batch = Globals.WINDOWMANAGER.selectedwindow.batch.batch
-        super().__init__(   text="<font color=white size=6><b>{}</b></font>".format(self.txt),
-                            x=x,
-                            y=y,
-                            batch=self.batch,
-                            # color=Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get(),
-                            width=10,
-                            height=10,
-                            anchor_x='center',
-                            anchor_y='center'
-                        )
-
-    def reload(self):
-        self.__init__()
-
-    def text(self):
-        self.text = text
+class Font:
+    def __init__(self,fonttype,fontsize):
+        self.type = fonttype
+        self.size = fontsize

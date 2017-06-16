@@ -53,7 +53,6 @@ class Init:
         # run setup from sketch
         self.setup()
 
-        glEnable(GL_TEXTURE_2D)  # enable textures
         glShadeModel(GL_SMOOTH)  # smooth shading of polygons
 
         event_loop = pyglet.app.EventLoop()
