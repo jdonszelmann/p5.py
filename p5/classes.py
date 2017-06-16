@@ -18,7 +18,7 @@ class _CreateWindow(pyglet.window.Window):
         super().__init__(w, h, resizable=resizable,caption=caption)
         Globals.WINDOWMANAGER.add(self)
         self.fps_display = pyglet.clock.ClockDisplay()
-        self.draw_fps = True
+        self.draw_fps = False
         self.framebuffer = None
 
 

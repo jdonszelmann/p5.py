@@ -18,6 +18,7 @@ class globalvars:
     KEYPRESSED = False
     ANGLEMODE = "RADIANS"
     RANDOMSEED = 1
+    LOOP = True
 
 # ------------------------------------------------------------------------
 # declaration of constants

@@ -72,7 +72,8 @@ class Init:
             for i in Globals.WINDOWMANAGER.windows:
                 i.drawsettings.reset()
 
-            self.draw()
+            if Globals.LOOP:
+                self.draw()
             if not Globals.RUNNING:
                 event_loop.exit()
 
@@ -80,6 +81,8 @@ class Init:
         pyglet.clock.schedule_interval(update, 1 / Globals.FPS)
         event_loop.run()
 
+def redraw():
+    init.draw()
 
 def _CreateWindow(*args, **kwargs):
     global KeyPressed, KeyTyped, KeyReleased,MouseDragged,MousePressed

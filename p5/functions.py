@@ -221,3 +221,9 @@ def font(name):
 
 def fontsize(val:int):
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.size = val
+
+def loop():
+    Globals.LOOP = True
+
+def noloop():
+    Globals.LOOP = False

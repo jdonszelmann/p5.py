@@ -4,7 +4,7 @@ import math
 def setup():
     global window, grid, snake
     window = CreateWindow(630, 480,resizable=False)
-    caption("hey!")
+    caption("Snake")
     background(51)
     grid = Grid(window)
     snake = Snake()
@@ -15,21 +15,20 @@ def draw():
     grid.draw()
     snake.update()
 
-
 def KeyPressed():
-    global snake
-    if key == "LEFT":
-        if not snake.direction == "EAST":
-            snake.direction = "WEST"
-    if key == "RIGHT":
-        if not snake.direction == "WEST":
-            snake.direction = "EAST"
-    if key == "UP":
-        if not snake.direction == "SOUTH":
-            snake.direction = "NORTH"
-    if key == "DOWN":
-        if not snake.direction == "NORTH":
-            snake.direction = "SOUTH"
+    global snake, window
+    loop()
+    if key == "LEFT" and not snake.direction == "EAST": snake.direction = "WEST"
+    if key == "RIGHT" and not snake.direction == "WEST": snake.direction = "EAST"
+    if key == "UP" and not snake.direction == "SOUTH": snake.direction = "NORTH"
+    if key == "DOWN" and not snake.direction == "NORTH": snake.direction = "SOUTH"
+    if key == "ESCAPE": 
+        noloop()
+        fill(name="aqua")
+        fontsize(50)
+        text("paused",window.width//2,window.height//2)
+        fontsize(20)
+        text("press any key to continue",window.width//2,(window.height//2)-55)
 
 class Grid:
     def __init__(self,window):
@@ -46,30 +45,23 @@ class Grid:
                 r += 1
         self.respawn()
 
-
     def draw(self):
         for i in self.squares:
             i.draw()
 
-    def respawn(self):
+    def respawn(self): 
         random(self.squares).apple = True
 
 class square:
     def __init__(self,x,y,r,c):
-        self.x = x
-        self.y = y
-        self.r = r
-        self.c = c
+        self.x,self.y,self.r,self.c = x,y,r,c
         self.snake = False
         self.apple = False
 
     def draw(self):
-        if self.snake:
-            fill(name="limegreen")
-        elif self.apple:
-            fill(name="red")
-        else:
-            fill(51)
+        if self.snake: fill(name="limegreen")
+        elif self.apple: fill(name="red")
+        else: fill(51)
         rect(self.x,self.y,29,29)
 
 class Snake:
@@ -83,6 +75,7 @@ class Snake:
     def update(self):
         global grid
 
+        #movement
         if self.direction == "NORTH":
             self.heady += 1
         if self.direction == "SOUTH":
@@ -92,6 +85,7 @@ class Snake:
         if self.direction == "WEST":
             self.headx -= 1    
 
+        #wrapping
         if self.headx > 21:
             self.headx = 1
         if self.headx < 1:
@@ -101,7 +95,6 @@ class Snake:
         if self.heady < 0:
             self.heady = 15
 
-
         if [self.headx,self.heady] in self.coords:
             exit()
 
@@ -110,10 +103,9 @@ class Snake:
         if len(self.coords) > self.length:
             end = self.coords.pop()
 
-
+        #setting and unsetting snaketiles
         for i in grid.squares:
-            if i.r == self.heady and i.c == self.headx:
-                i.snake = True
+            if i.r == self.heady and i.c == self.headx: i.snake = True
             if end != None:
                 if i.r == end[1] and i.c == end[0]:
                     i.snake = False
@@ -121,10 +113,3 @@ class Snake:
                 i.apple = False
                 grid.respawn()
                 self.length += 1
-
-
-
-
-
-
-        
