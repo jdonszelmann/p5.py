@@ -29,10 +29,10 @@
 * arc()
 * ellipse()
 * line()
-*~~point()~~
+* ~~point()~~
 * quad()
-*~~rect()~~
-*~~triangle()~~
+* ~~rect()~~
+* ~~triangle()~~
 
 ### Attributes:
 
@@ -42,7 +42,7 @@
 * smooth()
 * strokeCap()
 * strokeJoin()
-*~~strokeWeight()~~
+* ~~strokeWeight()~~
 
 ### Curves:
 
@@ -91,18 +91,18 @@
 ## Structure
 
 * preload()
-*~~setup()~~
-*~~draw()~~
+* ~~setup()~~
+* ~~draw()~~
 * remove()
 * noLoop()
 * loop()
-*~~push()~~
-*~~pop()~~
+* ~~push()~~
+* ~~pop()~~
 * redraw()
 
 ## Environment:
 
-*~~print()~~
+* ~~print()~~
 * frameCount
 * focused
 * cursor()
@@ -127,26 +127,26 @@
 
 * applyMatrix()
 * resetMatrix()
-*~~rotate()~~
+* ~~rotate()~~
 * rotateX()
 * rotateY()
 * rotateZ()
 * scale()
 * shearX()
 * shearY()
-*~~translate()~~
+* ~~translate()~~
 
 ## Events:
 
 ### Keyboard:
 
-*~~keyIsPressed~~
-*~~key~~
-*~~keyCode~~
-*~~keyPressed()~~
-*~~keyReleased()~~
-*~~keyTyped()~~
-*~~keyIsDown()~~
+* ~~keyIsPressed~~
+* ~~key~~
+* ~~keyCode~~
+* ~~keyPressed()~~
+* ~~keyReleased()~~
+* ~~keyTyped()~~
+* ~~keyIsDown()~~
 
 ### Mouse:
 
@@ -233,53 +233,53 @@
 
 ## Math:
 
-*~~createVector()~~
-*~~p5.Vector~~
+* ~~createVector()~~
+* ~~p5.Vector~~
 
 ### Calculation:
 
-*~~abs()~~
-*~~ceil()~~
-*~~constrain()~~
-*~~dist()~~	
-*~~exp()~~
-*~~floor()~~
-*~~lerp()~~
-*~~log()~~
-*~~mag()~~
-*~~map()~~
-*~~max()~~
-*~~min()~~
-*~~norm()~~
-*~~pow()~~
-*~~round()~~
-*~~sq()~~
-*~~sqrt()~~
+* ~~abs()~~
+* ~~ceil()~~
+* ~~constrain()~~
+* ~~dist()~~	
+* ~~exp()~~
+* ~~floor()~~
+* ~~lerp()~~
+* ~~log()~~
+* ~~mag()~~
+* ~~map()~~
+* ~~max()~~
+* ~~min()~~
+* ~~norm()~~
+* ~~pow()~~
+* ~~round()~~
+* ~~sq()~~
+* ~~sqrt()~~
 
 ### Noise:
 
-*~~noise()~~
+* ~~noise()~~
 * noiseDetail()
-*~~noiseSeed()~~
+* ~~noiseSeed()~~
 
 ### Random:
 
-*~~randomSeed()~~
-*~~random()~~
-*~~randomGaussian()~~
+* ~~randomSeed()~~
+* ~~random()~~
+* ~~randomGaussian()~~
 
 ### Trigonometry:
 
-*~~acos()~~
-*~~asin()~~
-*~~atan()~~
-*~~atan2()~~
-*~~cos()~~
-*~~sin()~~
-*~~tan()~~
-*~~degrees()~~
-*~~radians()~~
-*~~angleMode()~~
+* ~~acos()~~
+* ~~asin()~~
+* ~~atan()~~
+* ~~atan2()~~
+* ~~cos()~~
+* ~~sin()~~
+* ~~tan()~~
+* ~~degrees()~~
+* ~~radians()~~
+* ~~angleMode()~~
 
 ## Typography
 
@@ -287,24 +287,24 @@
 
 * textAlign()
 * textLeading()
-*~~textSize()~~
+* ~~textSize()~~
 * textStyle()
 * textWidth()
 
 ### Loading & Displaying:
 
-*~~text()~~
-*~~textFont()~~
+* ~~text()~~
+* ~~textFont()~~
 
 ## Font:
 
-*~~p5.Font~~
+* ~~p5.Font~~
 
 ## Data
 
 ### Array Functions:
 
-*~~append()~~
+* ~~append()~~
 * arrayCopy()
 * concat()
 * reverse()
@@ -316,14 +316,14 @@
 
 ### Conversion:
 
-*~~float()~~
-*~~int()~~
-*~~str()~~
-*~~bool()~~
-*~~byte()~~
-*~~char()~~
+* ~~float()~~
+* ~~int()~~
+* ~~str()~~
+* ~~bool()~~
+* ~~byte()~~
+* ~~char()~~
 * unchar()
-*~~hex()~~
+* ~~hex()~~
 * unhex()
 
 ### String Functions:
