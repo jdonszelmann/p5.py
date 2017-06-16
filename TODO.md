@@ -44,7 +44,7 @@
 * strokeJoin()
 *~~strokeWeight()~~
 
-###Curves:
+### Curves:
 
 * bezier()
 * bezierPoint()
@@ -54,7 +54,7 @@
 * curvePoint()
 * curveTangent()
 
-###Vertex:
+### Vertex:
 
 * beginContour()
 * beginShape()
@@ -65,12 +65,12 @@
 * quadraticVertex()
 * vertex()
 
-###3D Models:
+### 3D Models:
 
 * loadModel()
 * model()
 
-###3D Primitives:
+### 3D Primitives:
 
 * plane()
 * box()
@@ -80,7 +80,7 @@
 * ellipsoid()
 * torus()
 
-##Constants:
+## Constants:
 
 * HALF_PI
 * PI
@@ -88,7 +88,7 @@
 * TAU
 * TWO_PI
 
-##Structure
+## Structure
 
 * preload()
 *~~setup()~~
@@ -100,7 +100,7 @@
 *~~pop()~~
 * redraw()
 
-##Environment:
+## Environment:
 
 *~~print()~~
 * frameCount
@@ -123,7 +123,7 @@
 * getURLParams()
 
 
-##Transform:
+## Transform:
 
 * applyMatrix()
 * resetMatrix()
@@ -136,9 +136,9 @@
 * shearY()
 *~~translate()~~
 
-##Events:
+## Events:
 
-###Keyboard:
+### Keyboard:
 
 *~~keyIsPressed~~
 *~~key~~
@@ -148,7 +148,7 @@
 *~~keyTyped()~~
 *~~keyIsDown()~~
 
-###Mouse:
+### Mouse:
 
 * mouseX
 * mouseY
@@ -168,14 +168,14 @@
 * mouseWheel()
 
 
-##Image:
+## Image:
 
 * createImage()
 * saveCanvas()
 * saveFrames()
 * p5.Image
 
-###Loading & Displaying:
+### Loading & Displaying:
 
 * loadImage()
 * image()
@@ -183,7 +183,7 @@
 * noTint()
 * imageMode()
 
-###Pixels
+### Pixels
 
 * pixels
 * blend()
@@ -194,9 +194,9 @@
 * set()
 * updatePixels()
 
-##IO
+## IO
 
-###Input:
+### Input:
 
 * loadFont()
 * loadJSON()
@@ -207,21 +207,21 @@
 * httpPost()
 * httpDo()
 
-###Output:
+### Output:
 
 * save()
 * saveJSON()
 * saveStrings()
 * saveTable()
 
-###Table:
+### Table:
 
 * p5.Table
 * p5.TableRow
 * XML
 * p5.XML
 
-###Time & Date
+### Time & Date
 
 * day()
 * hour()
@@ -231,12 +231,12 @@
 * second()
 * year()
 
-##Math:
+## Math:
 
 *~~createVector()~~
 *~~p5.Vector~~
 
-###Calculation:
+### Calculation:
 
 *~~abs()~~
 *~~ceil()~~
@@ -256,19 +256,19 @@
 *~~sq()~~
 *~~sqrt()~~
 
-###Noise:
+### Noise:
 
 *~~noise()~~
 * noiseDetail()
 *~~noiseSeed()~~
 
-###Random:
+### Random:
 
 *~~randomSeed()~~
 *~~random()~~
 *~~randomGaussian()~~
 
-###Trigonometry:
+### Trigonometry:
 
 *~~acos()~~
 *~~asin()~~
@@ -281,9 +281,9 @@
 *~~radians()~~
 *~~angleMode()~~
 
-##Typography
+## Typography
 
-###Attributes:
+### Attributes:
 
 * textAlign()
 * textLeading()
@@ -291,18 +291,18 @@
 * textStyle()
 * textWidth()
 
-###Loading & Displaying:
+### Loading & Displaying:
 
 *~~text()~~
 *~~textFont()~~
 
-##Font:
+## Font:
 
 *~~p5.Font~~
 
-##Data
+## Data
 
-###Array Functions:
+### Array Functions:
 
 *~~append()~~
 * arrayCopy()
@@ -314,7 +314,7 @@
 * splice()
 * subset()
 
-###Conversion:
+### Conversion:
 
 *~~float()~~
 *~~int()~~
@@ -326,7 +326,7 @@
 *~~hex()~~
 * unhex()
 
-###String Functions:
+### String Functions:
 
 * join()
 * match()
@@ -339,21 +339,21 @@
 * splitTokens()
 * trim()
 
-##Lights, Camera
+## Lights, Camera
 
-###Camera:
+### Camera:
 
 * camera()
 * perspective()
 * ortho()
 
-###Lights:
+### Lights:
 
 * ambientLight()
 * directionalLight()
 * pointLight()
 
-###Material:
+### Material:
 
 * normalMaterial()
 * texture()
