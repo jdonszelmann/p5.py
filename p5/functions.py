@@ -21,12 +21,9 @@ def CreateVector(*args, **kwargs):
 
 
 def point(x, y):
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(1, pyglet.gl.GL_POINTS, graphstyle("DAN",
-                                                                                      Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
-                                                   ('v2i', _get_coords(x, y)),
-                                                   ('c4f',
-                                                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(
-                                                        True))
+    Globals.WINDOWMANAGER.selectedwindow.batch.add( 1, pyglet.gl.GL_POINTS, graphstyle("DAN",Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+                                                   ('v2f', _get_coords(x,y,x, y)),
+                                                   ('c4f',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
 
 

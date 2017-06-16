@@ -2,7 +2,7 @@ import math
 from .globals import *
 from p5.classes import Vector
 from random import randint, triangular, seed, gauss
-from opensimplex import OpenSimplex
+from .opensimplex import OpenSimplex
 
 def cos(val):
 	return math.cos(val)

@@ -24,7 +24,7 @@ class DrawSettings:
         from p5.classes import Color,Vector
         # color related properties
         self.stroke = Color(255, 255, 255)
-        self.backgroundcolor = Color(255, 0, 255)
+        self.backgroundcolor = Color(51)
         self.fillcolor = Color(255, 255, 255)
         # value related properties
         self.strokeweight = 1

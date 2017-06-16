@@ -62,11 +62,11 @@ class Init:
             for i in Globals.WINDOWMANAGER.windows:
                 i.drawsettings.translate = Vector(0,0)
                 i.drawsettings.rotate = 0
-            self.draw(*self.todraw)
+            self.draw()
             if not Globals.RUNNING:
                 event_loop.exit()
 
-        pyglet.clock.set_fps_limit(1 / Globals.FPS)
+        pyglet.clock.set_fps_limit(Globals.FPS)
         pyglet.clock.schedule_interval(update, 1 / Globals.FPS)
         event_loop.run()
 

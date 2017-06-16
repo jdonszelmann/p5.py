@@ -14,17 +14,20 @@ class _CreateWindow(pyglet.window.Window):
         self.KeyPressed = keypressed
         super().__init__(w, h, resizable=resizable,caption=caption)
         Globals.WINDOWMANAGER.add(self)
+        self.fps_display = pyglet.clock.ClockDisplay()
 
     @property
     def size(self):
         return Vector(self.get_size())
 
+    @property
     def width(self):
         return self.get_size()[0]
 
     def height(self):
         return self.get_size()[1]
 
+    @property
     def resize(self,w,h):
         self.set_size(w,h)
 
@@ -51,9 +54,16 @@ class _CreateWindow(pyglet.window.Window):
         self.close()
 
     def on_draw(self):
+        # dt = pyglet.clock.tick()
+
         pyglet.gl.glClearColor(*self.drawsettings.backgroundcolor.get(True))
         self.clear()
         self.batch.draw()
+
+        #draw fps onscreen - dev option
+        self.fps_display.draw()
+        # print(pyglet.clock.get_fps())
+
         # pyglet.text.Label(x=100,y=100,text="hi").draw()
 
     def on_key_press(self, symbol, modifiers):
