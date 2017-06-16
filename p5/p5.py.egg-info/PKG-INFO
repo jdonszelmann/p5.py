@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: p5.py
-Version: 0.6
+Version: 0.8
 Summary: p5.js but in python! Uses simlar (mostly the same) syntax
 Home-page: https://github.com/jonay2000/p5.py
 Author: jonathan (jonay2000) and lucas

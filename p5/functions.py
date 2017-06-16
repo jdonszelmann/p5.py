@@ -131,6 +131,8 @@ def rotate(rad, absolute=False):
 def background(*args, **kwargs):
     from p5.classes import Color
     Globals.WINDOWMANAGER.selectedwindow.batch.clear()
+    Globals.WINDOWMANAGER.selectedwindow.framebuffer = None
+    Globals.WINDOWMANAGER.selectedwindow.cls()
 
     for i in args:
         if type(i) == Color:
@@ -142,6 +144,9 @@ def background(*args, **kwargs):
             return
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = Color(*args, **kwargs)
 
+    Globals.WINDOWMANAGER.selectedwindow.framebuffer = None
+    Globals.WINDOWMANAGER.selectedwindow.cls()
+    
 def fill(*args, **kwargs):
     for i in args:
         if type(i) == Color:
@@ -170,6 +175,8 @@ def strokeweight(weight: int = 1):
 def clear():
     Globals.WINDOWMANAGER.selectedwindow.clear()
     Globals.WINDOWMANAGER.selectedwindow.batch.clear()
+    Globals.WINDOWMANAGER.selectedwindow.framebuffer = None
+    Globals.WINDOWMANAGER.selectedwindow.cls()
 
 def colors():
     l = []

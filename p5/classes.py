@@ -2,6 +2,7 @@ from .globals import Globals
 from p5.core import Batch, DrawSettings
 import pyglet, importlib
 import math
+from PIL import Image
 
 
 class _CreateWindow(pyglet.window.Window):
@@ -15,8 +16,13 @@ class _CreateWindow(pyglet.window.Window):
         super().__init__(w, h, resizable=resizable,caption=caption)
         Globals.WINDOWMANAGER.add(self)
         self.fps_display = pyglet.clock.ClockDisplay()
-        self.draw_fps = False
+        self.draw_fps = True
+        self.framebuffer = None
 
+
+    def cls(self):
+        pyglet.gl.glClearColor(*self.drawsettings.backgroundcolor.get(True))
+        self.clear()
 
     @property
     def size(self):
@@ -26,10 +32,10 @@ class _CreateWindow(pyglet.window.Window):
     def width(self):
         return self.get_size()[0]
 
+    @property
     def height(self):
         return self.get_size()[1]
 
-    @property
     def resize(self,w,h):
         self.set_size(w,h)
 
@@ -56,18 +62,30 @@ class _CreateWindow(pyglet.window.Window):
         self.close()
 
     def on_draw(self):
-        # dt = pyglet.clock.tick()
+        # get copy of framebuffer
+        self.framebuffer = ( pyglet.gl.GLubyte * (3*self.width*self.height) )(0)
+        pyglet.gl.glReadPixels(0, 0, self.width, self.height,pyglet.gl.GL_RGB, pyglet.gl.GL_UNSIGNED_BYTE, self.framebuffer)
 
-        pyglet.gl.glClearColor(*self.drawsettings.backgroundcolor.get(True))
-        self.clear()
+
+        #clear screen
+        self.cls()
+
+        #redraw framebuffer       
+        if self.framebuffer != None:
+            pyglet.gl.glDrawPixels(self.width, self.height,pyglet.gl.GL_RGB, pyglet.gl.GL_UNSIGNED_BYTE,self.framebuffer)
+
+        #draw new batch over last framebuffer
         self.batch.draw()
+
+        #clear current batch (so nothing will be drawn twice)
+        self.batch.clear()
+
 
         #draw fps onscreen - dev option
         if self.draw_fps:
             self.fps_display.draw()
         # print(pyglet.clock.get_fps())
 
-        # pyglet.text.Label(x=100,y=100,text="hi").draw()
 
     def on_key_press(self, symbol, modifiers):
         import p5.globals

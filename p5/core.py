@@ -44,7 +44,7 @@ class DrawSettings:
 
     def reset(self):
         from p5.classes import Color,Vector,Font
-        
+
         self.stroke = Color(0,0,0)
         self.backgroundcolor = Color(51)
         self.fillcolor = Color(255, 255, 255)
@@ -69,6 +69,7 @@ class Batch():
 
     def clear(self):
         self.batch = pyglet.graphics.Batch()
+
 
 
 """

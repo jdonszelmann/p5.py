@@ -1,4 +1,5 @@
 # Functions to implement
+
 ## Colors:
 
 * alpha()
@@ -12,7 +13,7 @@
 * red()
 * saturation()
 
-## Setting:
+### Setting:
 
 * ~~background()~~
 * ~~clear()~~
@@ -28,10 +29,10 @@
 arc()
 ellipse()
 line()
-# point()
+~~point()~~
 quad()
-# rect()
-# triangle()
+~~rect()~~
+~~triangle()~~
 
 ### Attributes:
 
@@ -41,9 +42,9 @@ rectMode()
 smooth()
 strokeCap()
 strokeJoin()
-# strokeWeight()
+~~strokeWeight()~~
 
-Curves:
+###Curves:
 
 bezier()
 bezierPoint()
@@ -53,7 +54,7 @@ curveTightness()
 curvePoint()
 curveTangent()
 
-Vertex:
+###Vertex:
 
 beginContour()
 beginShape()
@@ -64,12 +65,12 @@ endShape()
 quadraticVertex()
 vertex()
 
-3D Models:
+###3D Models:
 
 loadModel()
 model()
 
-3D Primitives:
+###3D Primitives:
 
 plane()
 box()
@@ -79,7 +80,7 @@ cone()
 ellipsoid()
 torus()
 
-# Constants:
+##Constants:
 
 HALF_PI
 PI
@@ -87,21 +88,21 @@ QUARTER_PI
 TAU
 TWO_PI
 
-Structure
+##Structure
 
 preload()
-# setup()
-# draw()
+~~setup()~~
+~~draw()~~
 remove()
 noLoop()
 loop()
-push()
-pop()
+~~push()~~
+~~pop()~~
 redraw()
 
-Environment:
+##Environment:
 
-print()
+~~print()~~
 frameCount
 focused
 cursor()
@@ -122,20 +123,20 @@ getURLPath()
 getURLParams()
 
 
-Transform:
+##Transform:
 
 applyMatrix()
 resetMatrix()
-# rotate()
+~~rotate()~~
 rotateX()
 rotateY()
 rotateZ()
 scale()
 shearX()
 shearY()
-# translate()
+~~translate()~~
 
-Events:
+##Events:
 
 Acceleration
 deviceOrientation
@@ -157,17 +158,17 @@ deviceMoved()
 deviceTurned()
 deviceShaken()
 
-Keyboard:
+###Keyboard:
 
-# keyIsPressed
-# key
-# keyCode
-# keyPressed()
-# keyReleased()
-# keyTyped()
-# keyIsDown()
+~~keyIsPressed~~
+~~key~~
+~~keyCode~~
+~~keyPressed()~~
+~~keyReleased()~~
+~~keyTyped()~~
+~~keyIsDown()~~
 
-Mouse:
+###Mouse:
 
 mouseX
 mouseY
@@ -187,21 +188,23 @@ mouseClicked()
 mouseWheel()
 
 
-Image:
+##Image:
 
 createImage()
 saveCanvas()
 saveFrames()
 p5.Image
 
-Loading & Displaying:
+###Loading & Displaying:
 
 loadImage()
 image()
 tint()
 noTint()
 imageMode()
-Pixels
+
+###Pixels
+
 pixels
 blend()
 copy()
@@ -211,9 +214,9 @@ loadPixels()
 set()
 updatePixels()
 
-IO
+##IO
 
-Input:
+###Input:
 
 loadFont()
 loadJSON()
@@ -224,21 +227,21 @@ httpGet()
 httpPost()
 httpDo()
 
-Output:
+###Output:
 
 save()
 saveJSON()
 saveStrings()
 saveTable()
 
-Table:
+###Table:
 
 p5.Table
 p5.TableRow
 XML
 p5.XML
 
-Time & Date
+###Time & Date
 
 day()
 hour()
@@ -248,80 +251,80 @@ month()
 second()
 year()
 
-Math:
+##Math:
 
-# createVector()
-# p5.Vector
+~~createVector()~~
+~~p5.Vector~~
 
-Calculation:
+###Calculation:
 
-# abs()
-# ceil()
-# constrain()
-# dist()	
-# exp()
-# floor()
-# lerp()
-# log()
-# mag()
-# map()
-# max()
-# min()
-# norm()
-# pow()
-# round()
-# sq()
-# sqrt()
+~~abs()~~
+~~ceil()~~
+~~constrain()~~
+~~dist()~~	
+~~exp()~~
+~~floor()~~
+~~lerp()~~
+~~log()~~
+~~mag()~~
+~~map()~~
+~~max()~~
+~~min()~~
+~~norm()~~
+~~pow()~~
+~~round()~~
+~~sq()~~
+~~sqrt()~~
 
-Noise:
+###Noise:
 
-# noise()
+~~noise()~~
 noiseDetail()
-# noiseSeed()
+~~noiseSeed()~~
 
-Random:
+###Random:
 
-# randomSeed()
-# random()
-# randomGaussian()
+~~randomSeed()~~
+~~random()~~
+~~randomGaussian()~~
 
-Trigonometry:
+###Trigonometry:
 
-# acos()
-# asin()
-# atan()
-# atan2()
-# cos()
-# sin()
-# tan()
-# degrees()
-# radians()
-# angleMode()
+~~acos()~~
+~~asin()~~
+~~atan()~~
+~~atan2()~~
+~~cos()~~
+~~sin()~~
+~~tan()~~
+~~degrees()~~
+~~radians()~~
+~~angleMode()~~
 
-Typography
+##Typography
 
-Attributes:
+###Attributes:
 
 textAlign()
 textLeading()
-textSize()
+~~textSize()~~
 textStyle()
 textWidth()
 
-Loading & Displaying:
+###Loading & Displaying:
 
-# text()
-# textFont()
+~~text()~~
+~~textFont()~~
 
-Font:
+##Font:
 
-p5.Font
+~~p5.Font~~
 
-Data
+##Data
 
-Array Functions:
+###Array Functions:
 
-append()
+~~append()~~
 arrayCopy()
 concat()
 reverse()
@@ -331,19 +334,19 @@ sort()
 splice()
 subset()
 
-Conversion:
+###Conversion:
 
-float()
-int()
-str()
-boolean()
-byte()
-char()
+~~float()~~
+~~int()~~
+~~str()~~
+~~bool()~~
+~~byte()~~
+~~char()~~
 unchar()
-hex()
+~~hex()~~
 unhex()
 
-String Functions:
+###String Functions:
 
 join()
 match()
@@ -356,21 +359,21 @@ split()
 splitTokens()
 trim()
 
-Lights, Camera
+##Lights, Camera
 
-Camera:
+###Camera:
 
 camera()
 perspective()
 ortho()
 
-Lights:
+###Lights:
 
 ambientLight()
 directionalLight()
 pointLight()
 
-Material:
+###Material:
 
 normalMaterial()
 texture()

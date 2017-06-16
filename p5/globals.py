@@ -23,7 +23,6 @@ class globalvars:
 # declaration of constants
 Globals = globalvars()
 
-
 # geometry
 TAU = math.pi * 2
 TWO_PI = math.pi * 2

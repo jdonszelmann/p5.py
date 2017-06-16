@@ -4,6 +4,9 @@ from p5.classes import Vector
 from random import randint, triangular, seed, gauss
 from .opensimplex import OpenSimplex
 
+#since map is used we remap the builtin map function to pymap:
+pymap = map
+
 def cos(val):
 	return math.cos(val)
 
@@ -52,7 +55,7 @@ def norm(val,low,up):
 	return map(val,low,up,0,1)
 
 def map(val,srclow,srcup,destlow,destup):
-	return (X-srclow)/(srcup-srclow) * (destup-destlow) + destlow
+	return (val-srclow)/(srcup-srclow) * (destup-destlow) + destlow
 
 def mag(a,b):
 	return Vector(a,b).magnitude
@@ -92,8 +95,8 @@ def constrain(val,low,up):
 		out = low
 	return out
 
-def random(low,up):
-	if type(low) == list:
+def random(low,up = None):
+	if type(low) not in [int,float]:
 		return low[randint(0,len(low)-1)]
 	return triangular(low,up)
 
