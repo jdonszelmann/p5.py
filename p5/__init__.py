@@ -59,8 +59,8 @@ class Init:
 
         def update(dt):
             for i in Globals.WINDOWMANAGER.windows:
-                i.drawsettings.translate = Vector(0,0)
-                i.drawsettings.rotate = 0
+                i.drawsettings.reset()
+
             self.draw()
             if not Globals.RUNNING:
                 event_loop.exit()

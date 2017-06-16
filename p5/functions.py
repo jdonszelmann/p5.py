@@ -15,28 +15,24 @@ def _get_coords(x, y, coord1, coord2):
     v += Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate
     return v.x, v.y
 
-
 def CreateVector(*args, **kwargs):
     return Vector(*args, **kwargs)
 
-
-def text(txt,x,y"):
+def text(txt,x,y):
     pyglet.text.Label(  txt,
-                        batch=batch,
+                        batch= Globals.WINDOWMANAGER.selectedwindow.batch.batch,
                         x=x,
                         y=y,
                         font_size = Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.size,
-                        font_name = Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.type
+                        font_name = Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.type,
+                        color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get()
                     )
-
-
 
 def point(x, y):
     Globals.WINDOWMANAGER.selectedwindow.batch.add( 1, pyglet.gl.GL_POINTS, graphstyle("DAN",Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', _get_coords(x,y,x, y)),
                                                    ('c4f',Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
-
 
 # Shapes
 def rect(x, y, w, h):
@@ -65,7 +61,6 @@ def rect(x, y, w, h):
                                                         True))
                                                    )
 
-
 def line(x1, y1, x2, y2):
     points = _get_coords(x1, y2, x1, y1) + _get_coords(x1, y2, x2, y2)
     Globals.WINDOWMANAGER.selectedwindow.batch.add(2, pyglet.gl.GL_LINES, graphstyle("DAN",
@@ -75,7 +70,6 @@ def line(x1, y1, x2, y2):
                                                     2 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get(
                                                         True))
                                                    )
-
 
 def triangle(x1, y1, x2, y2, x3, y3):
     line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokecolor.get()
@@ -87,7 +81,6 @@ def triangle(x1, y1, x2, y2, x3, y3):
                                                     3 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(
                                                         True))
                                                    )
-
 
 def ellipse(x, y, w, h):
     ACCURACY = 500
@@ -115,44 +108,6 @@ def ellipse(x, y, w, h):
                                                        True))
                                                    )
 
-
-# def test():
-#     class CustomGroup1(pyglet.graphics.Group):
-#         def set_state(self):
-#             pyglet.gl.glPointSize(10.0)
-#             # disable blending 
-#             pyglet.gl.glDisable(pyglet.gl.GL_BLEND)
-#             # turn on anti-aliasing
-#             pyglet.gl.glEnable(pyglet.gl.GL_POINT_SMOOTH)
-#             # enable use of alpha function 
-#             pyglet.gl.glEnable(pyglet.gl.GL_ALPHA_TEST) 
-#             # alpha comparison 
-#             pyglet.gl.glAlphaFunc(pyglet.gl.GL_GREATER, 0.5) 
-
-#     class CustomGroup2(pyglet.graphics.Group):
-#         def set_state(self):
-#             pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH) 
-#             pyglet.gl.glLineWidth(10.0)
-
-
-#         def unset_state(self):
-#             pyglet.gl.glDisable(pyglet.gl.GL_ALPHA_TEST) 
-#             pyglet.gl.glDisable(pyglet.gl.GL_POINT_SMOOTH)
-
-
-#     Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_POINTS,CustomGroup1(),
-#                                                     ('v2f',(50,10,50,30,150,10,150,30)),
-#                                                     ('c4f', 4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
-#                                                     )
-#     Globals.WINDOWMANAGER.selectedwindow.batch.add(8,pyglet.gl.GL_LINES,CustomGroup2(),
-#                                                     ('v2f',(50,10, 50,30, 150,10, 150,30, 50,10, 150,10, 50,30, 150,30)),
-#                                                     ('c4f', 8 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
-#                                                     ) 
-#     Globals.WINDOWMANAGER.selectedwindow.batch.add(4,pyglet.gl.GL_QUADS,None,
-#                                                     ('v2f',(50.0, 10.0,50,30, 150.0, 30.0,150,10)),
-#                                                     ('c4f', 4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
-#                                                     )
-
 def translate(x, y, absolute=False):
     if absolute:
         if type(x) == Vector:
@@ -163,7 +118,6 @@ def translate(x, y, absolute=False):
             Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate += x
         Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate += Vector(x, y)
 
-
 def rotate(rad,absolute=False):
     if Globals.ANGLEMODE == "DEGREES":
         rad = radians(rad)
@@ -173,7 +127,6 @@ def rotate(rad, absolute=False):
         Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate = rad
     else:
         Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate += rad
-
 
 def background(*args, **kwargs):
     from p5.classes import Color
@@ -189,7 +142,6 @@ def background(*args, **kwargs):
             return
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = Color(*args, **kwargs)
 
-
 def fill(*args, **kwargs):
     for i in args:
         if type(i) == Color:
@@ -200,7 +152,6 @@ def fill(*args, **kwargs):
             Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = value
             return
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor = Color(*args, **kwargs)
-
 
 def stroke(*args, **kwargs):
     for i in args:
@@ -213,15 +164,12 @@ def stroke(*args, **kwargs):
             return
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke = Color(*args, **kwargs)
 
-
 def strokeweight(weight: int = 1):
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight = weight
-
 
 def clear():
     Globals.WINDOWMANAGER.selectedwindow.clear()
     Globals.WINDOWMANAGER.selectedwindow.batch.clear()
-
 
 def colors():
     l = []
@@ -230,39 +178,37 @@ def colors():
             l.append(i)
     return l
 
-
 def stop():
     sys.exit()
-
 
 def caption(caption):
     Globals.WINDOWMANAGER.selectedwindow.set_caption(caption)
 
-
 def fullscreen():
     Globals.WINDOWMANAGER.selectedwindow.maximize()
-
 
 def push():
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.push()
 
-
 def pop():
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.pop()
-
 
 def rectmode(mode):
     if mode.upper() not in ["CENTER", "RADIUS", "CORNER", "CORNERS"]:
         raise ValueError("rectmode can be: {}".format('"CENTER","RADIUS","CORNER","CORNERS"'))
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode = mode
 
-
 def maxsize(x, y):
     Globals.WINDOWMANAGER.selectedwindow.set_maximum_size(x, y)
 
-
 def minsize(x, y):
-    "HI!"set_minimum_size(x, y)
+    set_minimum_size(x, y)
 
 def draw_fps():
     Globals.WINDOWMANAGER.selectedwindow.draw_fps = not Globals.WINDOWMANAGER.selectedwindow.draw_fps
+
+def font(name):
+    Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.type = name
+
+def fontsize(val:int):
+    Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.size = val

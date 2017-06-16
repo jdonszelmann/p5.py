@@ -313,6 +313,7 @@ class Color:
             return (self.r, self.g, self.b, self.a)
 
 class Font:
-    def __init__(self,fonttype,fontsize):
-        self.type = fonttype
+    def __init__(self,fonttype = "Arial",fontsize = 14):
         self.size = fontsize
+        self.type = fonttype
+       

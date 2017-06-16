@@ -16,4 +16,4 @@ def draw():
     y += noise(1,w)
     w += 0.1
     point(x,y)
-    # text("HI!",100,100)
+    fontsize(int(y))
