@@ -21,7 +21,7 @@ class Init:
         spec = importlib.util.spec_from_file_location("", Globals.FILE)
         sketch = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(sketch)
-        global KeyTyped, KeyPressed, KeyReleased
+        global KeyTyped, KeyPressed, KeyReleased,MousePressed,MouseDragged
         try:
             self.setup = sketch.setup
         except:
@@ -45,6 +45,17 @@ class Init:
         except:
             print("No keyTyped")
             self.KeyTyped = KeyTyped = lambda: 0
+        try:
+            self.MouseDragged = MouseDragged
+        except:
+            print("No keyTyped")
+            self.MouseDragged = MouseDragged = lambda: 0
+        try:
+            self.MousePressed = MousePressed
+        except:
+            print("No keyTyped")
+            self.MousePressed = MousePressed = lambda: 0
+
 
         # start p5py
         self.start()
@@ -71,8 +82,8 @@ class Init:
 
 
 def _CreateWindow(*args, **kwargs):
-    global KeyPressed, KeyTyped, KeyReleased
-    window = cw(*args, keypressed=KeyPressed, keytyped=KeyTyped, keyreleased=KeyReleased)
+    global KeyPressed, KeyTyped, KeyReleased,MouseDragged,MousePressed
+    window = cw(*args,**kwargs, keypressed=KeyPressed, keytyped=KeyTyped, keyreleased=KeyReleased,mousedragged=MouseDragged,mousepressed=MousePressed)
     run = True
     return window
 

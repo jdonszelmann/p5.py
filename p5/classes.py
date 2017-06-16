@@ -7,12 +7,14 @@ from PIL import Image
 
 class _CreateWindow(pyglet.window.Window):
     def __init__(self, w=Globals.DEFAULTWIDTH, h=Globals.DEFAULTHEIGHT, resizable=True, keypressed=0,
-                 keyreleased=0, keytyped=0,caption="p5.py"):
+                 keyreleased=0, keytyped=0,mousepressed=0,mousedragged = 0,caption="p5.py"):
         self.batch = Batch()
         self.drawsettings = DrawSettings()
         self.KeyTyped = keytyped
         self.KeyReleased = keyreleased
         self.KeyPressed = keypressed
+        self.MousePressed = mousepressed
+        self.MouseDragged = mousedragged
         super().__init__(w, h, resizable=resizable,caption=caption)
         Globals.WINDOWMANAGER.add(self)
         self.fps_display = pyglet.clock.ClockDisplay()
@@ -43,7 +45,7 @@ class _CreateWindow(pyglet.window.Window):
         self.onscreen = False
 
     def on_mouse_enter(self,x, y):
-        self.onscreen = True
+        self.onscreen = False
 
     def select(self,select=False):
         Globals.WINDOWMANAGER.selectedwindow = self
@@ -85,6 +87,23 @@ class _CreateWindow(pyglet.window.Window):
         if self.draw_fps:
             self.fps_display.draw()
         # print(pyglet.clock.get_fps())
+
+    def on_mouse_motion(self,x, y, dx, dy):
+        import p5.globals
+        p5.globals.mousex.set(x)
+        p5.globals.mousey.set(y)
+        p5.globals.rmousex.set(dx)
+        p5.globals.rmousey.set(dy)
+        try:
+            self.MouseDragged()
+        except AttributeError:
+            pass
+
+    def on_mouse_press(self,x, y, button, modifiers):
+        try:
+            self.MousePressed()
+        except AttributeError:
+            pass
 
 
     def on_key_press(self, symbol, modifiers):

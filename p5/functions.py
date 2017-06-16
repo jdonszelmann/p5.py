@@ -25,7 +25,9 @@ def text(txt,x,y):
                         y=y,
                         font_size = Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.size,
                         font_name = Globals.WINDOWMANAGER.selectedwindow.drawsettings.font.type,
-                        color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get()
+                        color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(),
+                        anchor_x = "center",
+                        anchor_y = "center"
                     )
 
 def point(x, y):
@@ -146,7 +148,7 @@ def background(*args, **kwargs):
 
     Globals.WINDOWMANAGER.selectedwindow.framebuffer = None
     Globals.WINDOWMANAGER.selectedwindow.cls()
-    
+
 def fill(*args, **kwargs):
     for i in args:
         if type(i) == Color:
