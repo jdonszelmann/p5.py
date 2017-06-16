@@ -26,114 +26,114 @@
 ## Shape
 ### 2D Primitives:
 
-*arc()
-*ellipse()
-*line()
+* arc()
+* ellipse()
+* line()
 *~~point()~~
-*quad()
+* quad()
 *~~rect()~~
 *~~triangle()~~
 
 ### Attributes:
 
-*ellipseMode()
-*noSmooth()
-*rectMode()
-*smooth()
-*strokeCap()
-*strokeJoin()
+* ellipseMode()
+* noSmooth()
+* rectMode()
+* smooth()
+* strokeCap()
+* strokeJoin()
 *~~strokeWeight()~~
 
 ###Curves:
 
-*bezier()
-*bezierPoint()
-*bezierTangent()
-*curve()
-*curveTightness()
-*curvePoint()
-*curveTangent()
+* bezier()
+* bezierPoint()
+* bezierTangent()
+* curve()
+* curveTightness()
+* curvePoint()
+* curveTangent()
 
 ###Vertex:
 
-*beginContour()
-*beginShape()
-*bezierVertex()
-*curveVertex()
-*endContour()
-*endShape()
-*quadraticVertex()
-*vertex()
+* beginContour()
+* beginShape()
+* bezierVertex()
+* curveVertex()
+* endContour()
+* endShape()
+* quadraticVertex()
+* vertex()
 
 ###3D Models:
 
-*loadModel()
-*model()
+* loadModel()
+* model()
 
 ###3D Primitives:
 
-*plane()
-*box()
-*sphere()
-*cylinder()
-*cone()
-*ellipsoid()
-*torus()
+* plane()
+* box()
+* sphere()
+* cylinder()
+* cone()
+* ellipsoid()
+* torus()
 
 ##Constants:
 
-*HALF_PI
-*PI
-*QUARTER_PI
-*TAU
-*TWO_PI
+* HALF_PI
+* PI
+* QUARTER_PI
+* TAU
+* TWO_PI
 
 ##Structure
 
-*preload()
+* preload()
 *~~setup()~~
 *~~draw()~~
-*remove()
-*noLoop()
-*loop()
+* remove()
+* noLoop()
+* loop()
 *~~push()~~
 *~~pop()~~
-*redraw()
+* redraw()
 
 ##Environment:
 
 *~~print()~~
-*frameCount
-*focused
-*cursor()
-*frameRate()
-*noCursor()
-*displayWidth
-*displayHeight
-*windowWidth
-*windowHeight
-*windowResized()
-*width
-*height
-*fullscreen()
-*pixelDensity()
-*displayDensity()
-*getURL()
-*getURLPath()
-*getURLParams()
+* frameCount
+* focused
+* cursor()
+* frameRate()
+* noCursor()
+* displayWidth
+* displayHeight
+* windowWidth
+* windowHeight
+* windowResized()
+* width
+* height
+* fullscreen()
+* pixelDensity()
+* displayDensity()
+* getURL()
+* getURLPath()
+* getURLParams()
 
 
 ##Transform:
 
-*applyMatrix()
-*resetMatrix()
+* applyMatrix()
+* resetMatrix()
 *~~rotate()~~
-*rotateX()
-*rotateY()
-*rotateZ()
-*scale()
-*shearX()
-*shearY()
+* rotateX()
+* rotateY()
+* rotateZ()
+* scale()
+* shearX()
+* shearY()
 *~~translate()~~
 
 ##Events:
@@ -150,86 +150,86 @@
 
 ###Mouse:
 
-*mouseX
-*mouseY
-*pmouseX
-*pmouseY
-*winMouseX
-*winMouseY
-*pwinMouseX
-*pwinMouseY
-*mouseButton
-*mouseIsPressed
-*mouseMoved()
-*mouseDragged()
-*mousePressed()
-*mouseReleased()
-*mouseClicked()
-*mouseWheel()
+* mouseX
+* mouseY
+* pmouseX
+* pmouseY
+* winMouseX
+* winMouseY
+* pwinMouseX
+* pwinMouseY
+* mouseButton
+* mouseIsPressed
+* mouseMoved()
+* mouseDragged()
+* mousePressed()
+* mouseReleased()
+* mouseClicked()
+* mouseWheel()
 
 
 ##Image:
 
-*createImage()
-*saveCanvas()
-*saveFrames()
-*p5.Image
+* createImage()
+* saveCanvas()
+* saveFrames()
+* p5.Image
 
 ###Loading & Displaying:
 
-*loadImage()
-*image()
-*tint()
-*noTint()
-*imageMode()
+* loadImage()
+* image()
+* tint()
+* noTint()
+* imageMode()
 
 ###Pixels
 
-*pixels
-*blend()
-*copy()
-*filter()
-*get()
-*loadPixels()
-*set()
-*updatePixels()
+* pixels
+* blend()
+* copy()
+* filter()
+* get()
+* loadPixels()
+* set()
+* updatePixels()
 
 ##IO
 
 ###Input:
 
-*loadFont()
-*loadJSON()
-*loadStrings()
-*loadTable()
-*loadXML()
-*httpGet()
-*httpPost()
-*httpDo()
+* loadFont()
+* loadJSON()
+* loadStrings()
+* loadTable()
+* loadXML()
+* httpGet()
+* httpPost()
+* httpDo()
 
 ###Output:
 
-*save()
-*saveJSON()
-*saveStrings()
-*saveTable()
+* save()
+* saveJSON()
+* saveStrings()
+* saveTable()
 
 ###Table:
 
-*p5.Table
-*p5.TableRow
-*XML
-*p5.XML
+* p5.Table
+* p5.TableRow
+* XML
+* p5.XML
 
 ###Time & Date
 
-*day()
-*hour()
-*minute()
-*millis()
-*month()
-*second()
-*year()
+* day()
+* hour()
+* minute()
+* millis()
+* month()
+* second()
+* year()
 
 ##Math:
 
@@ -259,7 +259,7 @@
 ###Noise:
 
 *~~noise()~~
-*noiseDetail()
+* noiseDetail()
 *~~noiseSeed()~~
 
 ###Random:
@@ -285,11 +285,11 @@
 
 ###Attributes:
 
-*textAlign()
-*textLeading()
+* textAlign()
+* textLeading()
 *~~textSize()~~
-*textStyle()
-*textWidth()
+* textStyle()
+* textWidth()
 
 ###Loading & Displaying:
 
@@ -305,14 +305,14 @@
 ###Array Functions:
 
 *~~append()~~
-*arrayCopy()
-*concat()
-*reverse()
-*shorten()
-*shuffle()
-*sort()
-*splice()
-*subset()
+* arrayCopy()
+* concat()
+* reverse()
+* shorten()
+* shuffle()
+* sort()
+* splice()
+* subset()
 
 ###Conversion:
 
@@ -322,40 +322,40 @@
 *~~bool()~~
 *~~byte()~~
 *~~char()~~
-*unchar()
+* unchar()
 *~~hex()~~
-*unhex()
+* unhex()
 
 ###String Functions:
 
-*join()
-*match()
-*matchAll()
-*nf()
-*nfc()
-*nfp()
-*nfs()
-*split()
-*splitTokens()
-*trim()
+* join()
+* match()
+* matchAll()
+* nf()
+* nfc()
+* nfp()
+* nfs()
+* split()
+* splitTokens()
+* trim()
 
 ##Lights, Camera
 
 ###Camera:
 
-*camera()
-*perspective()
-*ortho()
+* camera()
+* perspective()
+* ortho()
 
 ###Lights:
 
-*ambientLight()
-*directionalLight()
-*pointLight()
+* ambientLight()
+* directionalLight()
+* pointLight()
 
 ###Material:
 
-*normalMaterial()
-*texture()
-*ambientMaterial()
-*specularMaterial()
+* normalMaterial()
+* texture()
+* ambientMaterial()
+* specularMaterial()
