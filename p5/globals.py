@@ -17,6 +17,8 @@ class globalvars:
     ANGLEMODE = "RADIANS"
     RANDOMSEED = 1
     LOOP = True
+    EVENT_LOOP = None
+    RECTS = []
 
 # ------------------------------------------------------------------------
 # declaration of constants

@@ -14,9 +14,11 @@ def background(*args, **kwargs):
     Globals.WINDOWMANAGER.selectedwindow.drawsettings.backgroundcolor = Color(*args, **kwargs)
 
     Globals.WINDOWMANAGER.selectedwindow.cls()
+    Globals.RECTS = []
 
 def clear():
     Globals.WINDOWMANAGER.selectedwindow.cls()
+    Globals.RECTS = []
 
 def colors():
     l = []
@@ -49,7 +51,7 @@ def maxsize(x, y):
     Globals.WINDOWMANAGER.selectedwindow.set_maximum_size(x, y)
 
 def minsize(x, y):
-    set_minimum_size(x, y)
+    Globals.WINDOWMANAGER.selectedwindow.set_minimum_size(x, y)
 
 def draw_fps():
     Globals.WINDOWMANAGER.selectedwindow.draw_fps = not Globals.WINDOWMANAGER.selectedwindow.draw_fps

@@ -51,35 +51,43 @@ def rect(x, y, w, h):
         w *= 2
         h *= 2
 
+    rectarr = [     Globals.WINDOWMANAGER.selectedwindow,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.r,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.g,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.b,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.a,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight,
+                    x,w,y,h,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.rotate,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate.x,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.translate.y,
+                    Globals.WINDOWMANAGER.selectedwindow.drawsettings.rectmode
+                ]
+    # if rectarr not in Globals.RECTS:
+    #     Globals.RECTS.append(rectarr)
+
+
     points = _get_coords(originalx, originaly, x, y) + _get_coords(originalx, originaly, x + w, y) + _get_coords(
         originalx, originaly, x + w, y + h) + _get_coords(originalx, originaly, x, y + h)
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_QUADS, graphstyle("DAN",
-                                                                                     Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(4, pyglet.gl.GL_QUADS, graphstyle("DAN",Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', points),
-                                                   ('c4f',
-                                                    4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(
-                                                        True))
+                                                   ('c4f',4 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
 
 def line(x1, y1, x2, y2):
     points = _get_coords(x1, y2, x1, y1) + _get_coords(x1, y2, x2, y2)
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(2, pyglet.gl.GL_LINES, graphstyle("DAN",
-                                                                                     Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(2, pyglet.gl.GL_LINES, graphstyle("DAN",Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', points),
-                                                   ('c4f',
-                                                    2 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get(
-                                                        True))
+                                                   ('c4f',2 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.stroke.get(True))
                                                    )
 
 def triangle(x1, y1, x2, y2, x3, y3):
     line_color = Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokecolor.get()
     points = _get_coords(x1, y2, x1, y1) + _get_coords(x1, y2, x2, y2) + _get_coords(x1, y2, x3, y3)
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(3, pyglet.gl.GL_TRIANGLES, graphstyle("DA",
-                                                                                         Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(3, pyglet.gl.GL_TRIANGLES, graphstyle("DA",Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', points),
-                                                   ('c4f',
-                                                    3 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(
-                                                        True))
+                                                   ('c4f',3 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
 
 def ellipse(x, y, w, h):
@@ -100,12 +108,9 @@ def ellipse(x, y, w, h):
         points.append(_get_coords(x, y, start[0] + cos(i / ACCURACY * 2 * PI) * r_cos,
                                   start[1] + sin(i / ACCURACY * 2 * PI) * r_sin))
     points = [i for sub in points for i in sub]
-    Globals.WINDOWMANAGER.selectedwindow.batch.add(len(points) // 2, pyglet.gl.GL_POLYGON, graphstyle("DA",
-                                                                                                      Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
+    Globals.WINDOWMANAGER.selectedwindow.batch.add(len(points) // 2, pyglet.gl.GL_POLYGON, graphstyle("DA",Globals.WINDOWMANAGER.selectedwindow.drawsettings.strokeweight),
                                                    ('v2f', points),
-                                                   ('c4f', len(
-                                                       points) // 2 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(
-                                                       True))
+                                                   ('c4f', len(points) // 2 * Globals.WINDOWMANAGER.selectedwindow.drawsettings.fillcolor.get(True))
                                                    )
 
 
