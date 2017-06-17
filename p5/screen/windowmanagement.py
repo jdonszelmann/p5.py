@@ -4,11 +4,13 @@ class WindowManager:
         self.selectedwindow = None
         self.windows = []
 
-    def select(self):
-        pass
+    def select(self,item):
+        self.selectedwindow = item
 
     def add(self,item):
         self.windows.append(item)
+        if len(self.windows) == 1:
+            self.selectedwindow = item
 
     def remove(self,item):
         from ..globals import Globals

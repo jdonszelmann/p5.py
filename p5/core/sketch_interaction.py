@@ -1,7 +1,7 @@
-from ..globals import *
 
 class sketch:
     def __init__(self):
+        from ..globals import Globals
         self.sketch = Globals.FILE
 
     def draw(self):

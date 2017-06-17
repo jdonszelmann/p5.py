@@ -1,3 +1,5 @@
+from ..math import math
+
 class Vector:
     DECIMAL_PRECISION = 6
 

@@ -1,10 +1,11 @@
 import pyglet
-from ..globals import *
 from ..core import batch
 from ..graphics import drawsettings
+from ..globals import Globals
 
 class _window(pyglet.window.Window):
     def __init__(self,width,height,resizable=True,caption="p5.py"):
+
         self.batch = batch.Batch()
         self.drawsettings = drawsettings.DrawSettings()
 

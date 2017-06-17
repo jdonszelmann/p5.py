@@ -1,11 +1,14 @@
-from ..globals import *
 from .sketch_interaction import sketch
 
-class loop:
+class Loop:
     def __init__(self,eventloop):
         self.sketch = sketch()
         self.eventloop = eventloop
         self.sketch.setup()
+
+        global Globals
+        from ..globals import Globals
+
 
     def update(self,dt):
         self.sketch.draw()

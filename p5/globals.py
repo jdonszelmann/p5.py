@@ -1,20 +1,18 @@
 import math
-from .screen import windowmanagement
-
-# no dependencies (tkinter is builtin)
 
 
 # ------------------------------------------------------------------------
 # declaration of global vars
 
 class globalvars:
+    from .screen.windowmanagement import WindowManager
     FPS = 60.0
     FILE = None
     RUNNING = True
     DEFAULTWIDTH = 640
     DEFAULTHEIGHT = 480
     MODE = "2D"
-    WINDOWMANAGER =  windowmanagement.WindowManager()
+    WINDOWMANAGER = WindowManager()
     KEYPRESSED = False
     ANGLEMODE = "RADIANS"
     RANDOMSEED = 1
